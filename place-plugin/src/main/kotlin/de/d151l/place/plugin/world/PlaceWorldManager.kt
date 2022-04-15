@@ -19,10 +19,10 @@ class PlaceWorldManager(
     lateinit var world: World
 
     init {
-        loadWorld()
+        loadWorld(31.0)
     }
 
-    private fun loadWorld() {
+    private fun loadWorld(size: Double) {
         val worldCreator: WorldCreator = WorldCreator("place")
         worldCreator.generator(PlaceChunkGenerator())
         val world = Bukkit.createWorld(worldCreator)
@@ -35,7 +35,7 @@ class PlaceWorldManager(
             world.spawnLocation = world.spawnLocation.set(0.5, 101.0, 0.5)
 
             world.worldBorder.center = world.spawnLocation.set(0.5, 101.0, 0.5)
-            world.worldBorder.size = 30.0
+            world.worldBorder.size = size
         }
 
         this.world = world!!
