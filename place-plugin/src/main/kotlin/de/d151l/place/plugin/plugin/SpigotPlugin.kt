@@ -1,7 +1,6 @@
 package de.d151l.place.plugin.plugin
 
 import de.d151l.place.plugin.Place
-import de.d151l.place.plugin.world.LoadPlaceWorld
 import org.bukkit.plugin.java.JavaPlugin
 
 /**
@@ -19,9 +18,5 @@ class SpigotPlugin: JavaPlugin() {
 
     override fun onDisable() {
         this.place.shutdown()
-    }
-
-    override fun onLoad() {
-        LoadPlaceWorld.loadWorld()
     }
 }

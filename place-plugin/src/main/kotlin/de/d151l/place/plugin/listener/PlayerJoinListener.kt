@@ -1,6 +1,7 @@
 package de.d151l.place.plugin.listener
 
 import de.d151l.place.plugin.Place
+import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
@@ -17,5 +18,10 @@ class PlayerJoinListener(
     @EventHandler
     fun onJoin(event: PlayerJoinEvent) {
         val player = event.player
+        val world = Bukkit.getWorld("place")
+
+        if (world != null) {
+            player.teleport(world.spawnLocation)
+        }
     }
 }

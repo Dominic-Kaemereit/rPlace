@@ -1,5 +1,6 @@
 package de.d151l.place.plugin
 
+import de.d151l.place.plugin.world.PlaceWorldManager
 import org.bukkit.plugin.java.JavaPlugin
 
 /**
@@ -10,6 +11,8 @@ import org.bukkit.plugin.java.JavaPlugin
 class Place(
     val javaPlugin: JavaPlugin
 ) {
+
+    val placeWorldManager: PlaceWorldManager = PlaceWorldManager(this)
 
     init {
         instance = this
