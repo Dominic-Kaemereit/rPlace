@@ -1,10 +1,13 @@
 package de.d151l.place.plugin
 
+import de.d151l.place.api.database.DatabaseType
 import de.d151l.place.plugin.countdown.CountdownManager
+import de.d151l.place.plugin.database.DatabaseManager
 import de.d151l.place.plugin.listener.BlockListener
 import de.d151l.place.plugin.listener.PlayerJoinListener
 import de.d151l.place.plugin.listener.PlayerQuitListener
 import de.d151l.place.plugin.listener.ProtectionListener
+import de.d151l.place.plugin.player.PlacePlayerCach
 import de.d151l.place.plugin.scorebord.ScoreboardManager
 import de.d151l.place.plugin.task.CooldownTask
 import de.d151l.place.plugin.world.PlaceWorldManager
@@ -24,6 +27,9 @@ class Place(
     val placeWorldManager: PlaceWorldManager = PlaceWorldManager(this)
     val scoreboardManager: ScoreboardManager = ScoreboardManager(this)
     val countdownManager: CountdownManager = CountdownManager(this)
+    val databaseManager: DatabaseManager = DatabaseManager(DatabaseType.MONGODB)
+    val placePlayerCach: PlacePlayerCach = PlacePlayerCach(this)
+
     val cooldownTask: CooldownTask = CooldownTask(this)
     val cooledowns: MutableMap<UUID, Long> = mutableMapOf()
 

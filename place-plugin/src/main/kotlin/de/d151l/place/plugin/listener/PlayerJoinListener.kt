@@ -21,6 +21,7 @@ class PlayerJoinListener(
         val player = event.player
         player.teleport(this.place.placeWorldManager.world.spawnLocation.set(0.5, 101.0, 0.5))
         player.gameMode = GameMode.CREATIVE
+        this.place.placePlayerCach.loadPlayer(player.uniqueId)
         this.place.scoreboardManager.setScoreBoard(player)
         this.place.scoreboardManager.updatePlayerCount()
     }

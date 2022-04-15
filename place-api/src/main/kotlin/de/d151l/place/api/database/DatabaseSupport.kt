@@ -10,7 +10,9 @@ import java.util.UUID
  */
 interface DatabaseSupport {
 
-    fun connect(host: String, port: Int, user: String, password: String)
+    fun connect(host: String, port: Int, user: String, password: String, database: String)
+
+    fun closeConnection()
 
     fun isPlayerRegistered(uuid: UUID): Boolean
 

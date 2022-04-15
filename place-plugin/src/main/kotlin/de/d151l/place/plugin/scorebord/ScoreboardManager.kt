@@ -20,25 +20,28 @@ class ScoreboardManager(
 
     fun setScoreBoard(player: Player) {
         val bord = FastBoard(player)
+        val placePlayer = this.place.placePlayerCach.getPlayer(player.uniqueId)
 
         bord.updateTitle("§lDEINSERVER.NET")
-        bord.updateLines(
-            "",
-            "§7Fortschritt",
-            "§8»§a 99.63%",
-            "",
-            "§7Countdown",
-            "§8»§a Bereit",
-            "",
-            "§7Deine Blöcke",
-            "§8»§a 0",
-            "",
-            "§7Spieler",
-            "§8»§a ${Bukkit.getOnlinePlayers().size}§7/${Bukkit.getMaxPlayers()}",
-            "",
-            "§7Deine Platzierung",
-            "§8»§a #0"
-        )
+        if (placePlayer != null) {
+            bord.updateLines(
+                "",
+                "§7Fortschritt",
+                "§8»§a 99.63%",
+                "",
+                "§7Countdown",
+                "§8»§a Bereit",
+                "",
+                "§7Deine Blöcke",
+                "§8»§a ${placePlayer.getBlockCount()}",
+                "",
+                "§7Spieler",
+                "§8»§a ${Bukkit.getOnlinePlayers().size}§7/${Bukkit.getMaxPlayers()}",
+                "",
+                "§7Deine Platzierung",
+                "§8»§a #0"
+            )
+        }
 
         this.list[player.uniqueId] = bord
     }
@@ -70,6 +73,13 @@ class ScoreboardManager(
         }
         for (entry in this.list) {
             entry.value.updateLine(11, "§8»§a ${onlinePlayers}§7/${maxPlayers}")
+        }
+    }
+
+    fun updateBlockCount(uuid: UUID) {
+        val player = this.place.placePlayerCach.getPlayer(uuid)
+        if (player != null) {
+            this.list[uuid]?.updateLine(8, "§8»§a ${player.getBlockCount()}")
         }
     }
 

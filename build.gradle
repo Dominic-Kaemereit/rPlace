@@ -30,6 +30,8 @@ subprojects {
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 
+        implementation 'org.mongodb:mongodb-driver-legacy:4.4.0'
+
         compileOnly 'org.json:json:20160810'
         compileOnly 'com.google.code.gson:gson:2.8.5'
         compileOnly 'org.mongodb:bson:3.8.1'
