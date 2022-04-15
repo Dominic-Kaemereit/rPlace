@@ -18,10 +18,6 @@ class PlayerJoinListener(
     @EventHandler
     fun onJoin(event: PlayerJoinEvent) {
         val player = event.player
-        val world = Bukkit.getWorld("place")
-
-        if (world != null) {
-            player.teleport(world.spawnLocation)
-        }
+        player.teleport(this.place.placeWorldManager.world.spawnLocation.set(0.5, 101.0, 0.5))
     }
 }

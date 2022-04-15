@@ -4,6 +4,7 @@ import de.d151l.place.plugin.Place
 import de.d151l.place.plugin.chunk.PlaceChunkGenerator
 import org.bukkit.Bukkit
 import org.bukkit.GameRule
+import org.bukkit.World
 import org.bukkit.WorldCreator
 
 /**
@@ -14,6 +15,8 @@ import org.bukkit.WorldCreator
 class PlaceWorldManager(
     private val place: Place
 ) {
+
+    lateinit var world: World
 
     init {
         loadWorld()
@@ -31,5 +34,7 @@ class PlaceWorldManager(
             world.worldBorder.center = world.spawnLocation.set(0.5, 101.0, 0.5)
             world.worldBorder.size = 3.0
         }
+
+        this.world = world!!
     }
 }
