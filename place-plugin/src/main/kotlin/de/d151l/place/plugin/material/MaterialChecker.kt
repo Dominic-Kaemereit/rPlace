@@ -12,20 +12,6 @@ import org.bukkit.entity.Player
  */
 object MaterialChecker {
 
-    fun checkInventory(place: Place, player: Player, material: Material): Boolean {
-
-        if (!material.isBlock) {
-            player.sendMessage("Diesen Block darftst du nicht benutzen1!")
-            return false
-        }
-
-        if (!material.isSolid) {
-            player.sendMessage("Diesen Block darftst du nicht benutzen2!")
-            return false
-        }
-        return true
-    }
-
     fun check(place: Place, player: Player, block: Block, material: Material): Boolean {
         if (material.isAir) {
             return false

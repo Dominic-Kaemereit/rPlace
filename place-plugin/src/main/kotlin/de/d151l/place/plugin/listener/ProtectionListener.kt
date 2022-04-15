@@ -43,17 +43,4 @@ class ProtectionListener(
             return
         event.isCancelled = true
     }
-
-    @EventHandler
-    fun onPlayerInteract(event: InventoryClickEvent) {
-        val currentItem = event.cursor
-        val player = event.whoClicked as Player
-        if (currentItem != null) {
-            if (!MaterialChecker.checkInventory(this.place, player, currentItem.type)) {
-                currentItem.amount = 0
-                event.isCancelled = true
-                return
-            }
-        }
-    }
 }
