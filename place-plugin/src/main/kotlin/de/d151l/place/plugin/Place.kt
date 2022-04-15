@@ -1,6 +1,10 @@
 package de.d151l.place.plugin
 
+import de.d151l.place.plugin.listener.BlockBreakListener
+import de.d151l.place.plugin.listener.PlayerJoinListener
+import de.d151l.place.plugin.listener.PlayerQuitListener
 import de.d151l.place.plugin.world.PlaceWorldManager
+import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
 /**
@@ -16,6 +20,12 @@ class Place(
 
     init {
         instance = this
+
+        val pluginManager = Bukkit.getPluginManager()
+        pluginManager.registerEvents(PlayerJoinListener(this), this.javaPlugin)
+        pluginManager.registerEvents(PlayerQuitListener(this), this.javaPlugin)
+        pluginManager.registerEvents(BlockBreakListener(this), this.javaPlugin)
+
     }
 
     fun shutdown() {
