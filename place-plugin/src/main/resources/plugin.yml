@@ -1,0 +1,5 @@
+name: R-Place
+author: D151l
+version: 1.0.0
+
+main: de.d151l.place.plugin.SpigotPlugin

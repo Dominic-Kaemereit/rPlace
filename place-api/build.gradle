@@ -1,0 +1,13 @@
+dependencies {
+    compileOnly(files("../libs/paper.jar"))
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+configurations.compile.setCanBeResolved(true)

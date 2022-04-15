@@ -1,0 +1,16 @@
+dependencies {
+    compileOnly(files("../libs/paper.jar"))
+    compile(project(":place-api"))
+
+    compile 'fr.mrmicky:fastboard:1.2.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+configurations.compile.setCanBeResolved(true)
