@@ -29,10 +29,13 @@ class PlaceWorldManager(
 
         if (world != null) {
             world.setGameRule(GameRule.SPAWN_RADIUS, 0)
+            world.setGameRule(GameRule.DO_WEATHER_CYCLE, false)
+            world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false)
+
             world.spawnLocation = world.spawnLocation.set(0.5, 101.0, 0.5)
 
             world.worldBorder.center = world.spawnLocation.set(0.5, 101.0, 0.5)
-            world.worldBorder.size = 3.0
+            world.worldBorder.size = 30.0
         }
 
         this.world = world!!
