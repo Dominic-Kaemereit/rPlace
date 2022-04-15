@@ -36,6 +36,7 @@ class PlaceWorldManager(
 
             world.worldBorder.center = world.spawnLocation.set(0.5, 101.0, 0.5)
             world.worldBorder.size = size
+            world.worldBorder.warningDistance = 0
         }
 
         this.world = world!!

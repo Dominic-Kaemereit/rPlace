@@ -1,10 +1,14 @@
 package de.d151l.place.plugin.listener
 
 import de.d151l.place.plugin.Place
+import de.d151l.place.plugin.material.MaterialChecker
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockPhysicsEvent
 import org.bukkit.event.entity.EntitySpawnEvent
+import org.bukkit.event.inventory.InventoryAction
+import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent
 import org.bukkit.event.player.PlayerInteractEvent
 
@@ -38,5 +42,18 @@ class ProtectionListener(
         if (clickedBlock != null)
             return
         event.isCancelled = true
+    }
+
+    @EventHandler
+    fun onPlayerInteract(event: InventoryClickEvent) {
+        val currentItem = event.cursor
+        val player = event.whoClicked as Player
+        if (currentItem != null) {
+            if (!MaterialChecker.checkInventory(this.place, player, currentItem.type)) {
+                currentItem.amount = 0
+                event.isCancelled = true
+                return
+            }
+        }
     }
 }
