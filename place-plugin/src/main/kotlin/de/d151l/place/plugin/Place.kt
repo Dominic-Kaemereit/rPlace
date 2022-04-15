@@ -6,6 +6,7 @@ import de.d151l.place.plugin.listener.PlayerQuitListener
 import de.d151l.place.plugin.world.PlaceWorldManager
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
+import java.util.UUID
 
 /**
  * @created 15/04/2022 - 02:14
@@ -17,6 +18,7 @@ class Place(
 ) {
 
     val placeWorldManager: PlaceWorldManager = PlaceWorldManager(this)
+    val cooledowns: MutableMap<UUID, Long> = mutableMapOf()
 
     init {
         instance = this
