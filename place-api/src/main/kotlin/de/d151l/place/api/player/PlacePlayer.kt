@@ -14,4 +14,8 @@ interface PlacePlayer {
     fun getBlockCount(): Int
 
     fun addBlockToCount()
+
+    fun getLastBlockRePlace(): Long
+
+    fun setLastBlockRePlace(time: Long)
 }

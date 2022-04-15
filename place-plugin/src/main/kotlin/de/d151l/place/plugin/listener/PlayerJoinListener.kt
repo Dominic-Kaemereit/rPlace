@@ -6,6 +6,7 @@ import org.bukkit.GameMode
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
+import java.util.concurrent.TimeUnit
 
 /**
  * @created 15/04/2022 - 13:25
@@ -21,7 +22,8 @@ class PlayerJoinListener(
         val player = event.player
         player.teleport(this.place.placeWorldManager.world.spawnLocation.set(0.5, 101.0, 0.5))
         player.gameMode = GameMode.CREATIVE
-        this.place.placePlayerCach.loadPlayer(player.uniqueId)
+        val loadPlayer = this.place.placePlayerCach.loadPlayer(player.uniqueId)
+        this.place.cooledowns[player.uniqueId] = loadPlayer.getLastBlockRePlace()
         this.place.scoreboardManager.setScoreBoard(player)
         this.place.scoreboardManager.updatePlayerCount()
     }

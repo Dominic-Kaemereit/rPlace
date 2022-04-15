@@ -15,16 +15,17 @@ class PlacePlayerCach(
 
     private val players: MutableMap<UUID, PlacePlayer> = mutableMapOf()
 
-    fun loadPlayer(uuid: UUID) {
+    fun loadPlayer(uuid: UUID): PlacePlayer {
         if (this.place.databaseManager.database.isPlayerRegistered(uuid)) {
             val placePlayer = this.place.databaseManager.database.getPlacePlayer(uuid)
             this.players[uuid] = placePlayer
-            return
+            return placePlayer
         }
 
         val placePlayer: PlacePlayer = PlacePlayerImpl(uuid.toString()) as PlacePlayer
         this.place.databaseManager.database.createPlayerInDatabase(placePlayer)
         this.players[uuid] = placePlayer
+        return placePlayer
     }
 
     fun unloadPlayer(uuid: UUID) {

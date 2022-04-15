@@ -13,6 +13,7 @@ class PlacePlayerImpl(
 ): PlacePlayer {
 
     private var blocks: Int = 0
+    private var lastBlockRePlace: Long = 0
 
     override fun getUUID(): UUID {
         return UUID.fromString(this.uuid)
@@ -24,5 +25,13 @@ class PlacePlayerImpl(
 
     override fun addBlockToCount() {
         this.blocks++
+    }
+
+    override fun getLastBlockRePlace(): Long {
+        return this.lastBlockRePlace
+    }
+
+    override fun setLastBlockRePlace(time: Long) {
+        this.lastBlockRePlace = time
     }
 }
