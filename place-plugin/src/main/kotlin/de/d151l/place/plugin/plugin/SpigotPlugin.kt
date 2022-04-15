@@ -1,6 +1,6 @@
-package de.d151l.place.plugin
+package de.d151l.place.plugin.plugin
 
-import de.d151l.place.Place
+import de.d151l.place.plugin.Place
 import org.bukkit.plugin.java.JavaPlugin
 
 class SpigotPlugin: JavaPlugin() {

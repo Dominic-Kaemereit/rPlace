@@ -1,4 +1,4 @@
-package de.d151l.place
+package de.d151l.place.plugin
 
 import org.bukkit.plugin.java.JavaPlugin
 
