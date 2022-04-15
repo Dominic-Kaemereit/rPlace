@@ -44,6 +44,7 @@ class BlockListener(
         this.place.cooledowns[player.uniqueId] = (System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(20))
         event.block.type = type
         this.place.placePlayerCach.getPlayer(player.uniqueId)?.addBlockToCount()
+        this.place.blockHistoryManager.addBlock(player, event.block.location)
         this.place.scoreboardManager.updateCountdown(player)
         this.place.scoreboardManager.updateBlockCount(player.uniqueId)
     }

@@ -5,8 +5,10 @@ import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoClients
 import com.mongodb.client.MongoCollection
 import com.mongodb.client.model.Filters
+import de.d151l.place.api.block.BlockHistory
 import de.d151l.place.api.database.DatabaseSupport
 import de.d151l.place.api.player.PlacePlayer
+import de.d151l.place.plugin.block.BlockHistoryImpl
 import de.d151l.place.plugin.player.PlacePlayerImpl
 import org.bson.Document
 import java.util.*
@@ -19,12 +21,14 @@ import java.util.*
 class MongoDB: DatabaseSupport {
 
     private lateinit var client: MongoClient
-    private lateinit var collection: MongoCollection<Document>
+    private lateinit var playerCollection: MongoCollection<Document>
+    private lateinit var blockCollection: MongoCollection<Document>
     private val gson: Gson = Gson()
 
     override fun connect(host: String, port: Int, user: String, password: String, database: String) {
         this.client = MongoClients.create("mongodb://" + user + ":" + password + "@" + host + ":" + port);
-        this.collection = this.client.getDatabase(database).getCollection("placePlayer")
+        this.playerCollection = this.client.getDatabase(database).getCollection("placePlayer")
+        this.blockCollection = this.client.getDatabase(database).getCollection("placeBlockHistory")
     }
 
     override fun closeConnection() {
@@ -32,24 +36,45 @@ class MongoDB: DatabaseSupport {
     }
 
     override fun isPlayerRegistered(uuid: UUID): Boolean {
-        if (this.collection.find(Filters.eq("uuid", uuid.toString())).first() == null)
+        if (this.playerCollection.find(Filters.eq("uuid", uuid.toString())).first() == null)
             return false
         return true
     }
 
     override fun getPlacePlayer(uuid: UUID): PlacePlayer {
         val toString = uuid.toString()
-        val document: Document = this.collection.find(Filters.eq("uuid", toString)).first()
+        val document: Document = this.playerCollection.find(Filters.eq("uuid", toString)).first()
         return gson.fromJson(document.toJson(), PlacePlayerImpl::class.java)
     }
 
     override fun savePlacePlayer(placePlayer: PlacePlayer) {
         val document = this.gson.fromJson(this.gson.toJson(placePlayer as PlacePlayerImpl), Document::class.java)
-        this.collection.replaceOne(Filters.eq("uuid", placePlayer.getUUID().toString()), document)
+        this.playerCollection.replaceOne(Filters.eq("uuid", placePlayer.getUUID().toString()), document)
     }
 
     override fun createPlayerInDatabase(placePlayer: PlacePlayer) {
         val document = this.gson.fromJson(this.gson.toJson(placePlayer as PlacePlayerImpl), Document::class.java)
-        this.collection.insertOne(document)
+        this.playerCollection.insertOne(document)
+    }
+
+    override fun isBlockHistory(blockHistory: BlockHistory): Boolean {
+        if (this.blockCollection.find(Filters.eq("location", blockHistory.getLocation())).first() == null)
+            return false
+        return true
+    }
+
+    override fun addBlockHistory(blockHistory: BlockHistory) {
+        val document = this.gson.fromJson(this.gson.toJson(blockHistory as BlockHistoryImpl), Document::class.java)
+        this.blockCollection.insertOne(document)
+    }
+
+    override fun getBlockHistory(blockHistory: BlockHistory): BlockHistory {
+        val document: Document = this.blockCollection.find(Filters.eq("location", blockHistory.getLocation())).first() as Document
+        return gson.fromJson(document.toJson(), BlockHistoryImpl::class.java)
+    }
+
+    override fun updateBlockHistory(blockHistory: BlockHistory) {
+        val document = this.gson.fromJson(this.gson.toJson(blockHistory as BlockHistoryImpl), Document::class.java)
+        this.blockCollection.replaceOne(Filters.eq("location", blockHistory.getLocation()), document)
     }
 }

@@ -1,6 +1,7 @@
 package de.d151l.place.plugin
 
 import de.d151l.place.api.database.DatabaseType
+import de.d151l.place.plugin.block.BlockHistoryManager
 import de.d151l.place.plugin.countdown.CountdownManager
 import de.d151l.place.plugin.database.DatabaseManager
 import de.d151l.place.plugin.listener.BlockListener
@@ -29,6 +30,7 @@ class Place(
     val countdownManager: CountdownManager = CountdownManager(this)
     val databaseManager: DatabaseManager = DatabaseManager(DatabaseType.MONGODB)
     val placePlayerCach: PlacePlayerCach = PlacePlayerCach(this)
+    val blockHistoryManager: BlockHistoryManager = BlockHistoryManager(this)
 
     val cooldownTask: CooldownTask = CooldownTask(this)
     val cooledowns: MutableMap<UUID, Long> = mutableMapOf()

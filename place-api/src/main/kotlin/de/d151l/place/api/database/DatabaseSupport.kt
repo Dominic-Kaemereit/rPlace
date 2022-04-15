@@ -1,5 +1,6 @@
 package de.d151l.place.api.database
 
+import de.d151l.place.api.block.BlockHistory
 import de.d151l.place.api.player.PlacePlayer
 import java.util.UUID
 
@@ -21,4 +22,12 @@ interface DatabaseSupport {
     fun savePlacePlayer(placePlayer: PlacePlayer)
 
     fun createPlayerInDatabase(placePlayer: PlacePlayer)
+
+    fun isBlockHistory(blockHistory: BlockHistory): Boolean
+
+    fun addBlockHistory(blockHistory: BlockHistory)
+
+    fun getBlockHistory(blockHistory: BlockHistory): BlockHistory
+
+    fun updateBlockHistory(blockHistory: BlockHistory)
 }
