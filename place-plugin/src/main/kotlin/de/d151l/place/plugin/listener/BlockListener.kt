@@ -1,6 +1,7 @@
 package de.d151l.place.plugin.listener
 
 import de.d151l.place.plugin.Place
+import de.d151l.place.plugin.material.MaterialChecker
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
@@ -32,18 +33,12 @@ class BlockListener(
             return
         }
 
-        if (player.inventory.itemInMainHand == null) {
-            event.isCancelled = true
-            return
-        }
-
         val type = player.inventory.itemInMainHand.type
         event.isCancelled = true
 
-        if (!type.isBlock)
-            return
+        val successful = MaterialChecker.check(this.place, player, event.block, type)
 
-        if (!type.isSolid)
+        if (!successful)
             return
 
         this.place.cooledowns[player.uniqueId] = (System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(20))
