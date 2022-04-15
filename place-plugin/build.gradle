@@ -1,16 +1,27 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
+}
+
 dependencies {
     compileOnly(files("../libs/paper.jar"))
-    compile(project(":place-api"))
+    implementation(project(":place-api"))
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
 
-    compile 'fr.mrmicky:fastboard:1.2.1'
+    implementation 'fr.mrmicky:fastboard:1.2.1'
 }
 
 test {
     useJUnitPlatform()
 }
 
-jar {
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+
+shadowJar {
+    relocate 'kotlin', 'de.d151l.libs.kotlin'
+    relocate 'fr.mrmicky.fastboard', 'de.d151l.libs.fastboard'
 }
 
-configurations.compile.setCanBeResolved(true)
+tasks {
+    build {
+        dependsOn(shadowJar)
+    }
+}
