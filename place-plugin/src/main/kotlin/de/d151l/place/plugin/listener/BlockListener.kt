@@ -19,24 +19,17 @@ class BlockListener(
     @EventHandler
     fun onBlockBreak(event: BlockBreakEvent) {
         val player = event.player
+        val cooldowen = this.place.countdownManager.getCooldowen(player)
 
-        if (this.place.cooledowns.containsKey(player.uniqueId)) {
-            var cooldown: Long? = this.place.cooledowns[player.uniqueId]
+        if (cooldowen > 0) {
 
-            if (cooldown != null) {
-                if (cooldown >= System.currentTimeMillis()) {
-                    cooldown = (cooldown - System.currentTimeMillis())
-                    val seconds = TimeUnit.MILLISECONDS.toSeconds(cooldown)
-
-                    if (seconds == TimeUnit.SECONDS.toSeconds(1)) {
-                        player.sendMessage("Du musst noch eine Sekunde warten!")
-                    } else {
-                        player.sendMessage("Du musst noch $seconds Sekunden warten!")
-                    }
-                    event.isCancelled = true
-                    return
-                }
+            if (cooldowen == TimeUnit.SECONDS.toSeconds(1)) {
+                player.sendMessage("Du musst noch eine Sekunde warten!")
+            } else {
+                player.sendMessage("Du musst noch $cooldowen Sekunden warten!")
             }
+            event.isCancelled = true
+            return
         }
 
         if (player.inventory.itemInMainHand == null) {
@@ -55,6 +48,7 @@ class BlockListener(
 
         this.place.cooledowns[player.uniqueId] = (System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(20))
         event.block.type = type
+        this.place.scoreboardManager.updateCountdown(player)
     }
 
     @EventHandler

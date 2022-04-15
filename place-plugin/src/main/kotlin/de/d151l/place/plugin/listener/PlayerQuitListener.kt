@@ -17,5 +17,6 @@ class PlayerQuitListener(
     @EventHandler
     fun onQuit(event: PlayerQuitEvent) {
         val player = event.player
+        this.place.scoreboardManager.removePlayer(player)
     }
 }

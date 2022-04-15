@@ -1,8 +1,11 @@
 package de.d151l.place.plugin
 
+import de.d151l.place.plugin.countdown.CountdownManager
 import de.d151l.place.plugin.listener.BlockListener
 import de.d151l.place.plugin.listener.PlayerJoinListener
 import de.d151l.place.plugin.listener.PlayerQuitListener
+import de.d151l.place.plugin.scorebord.ScoreboardManager
+import de.d151l.place.plugin.task.CooldownTask
 import de.d151l.place.plugin.world.PlaceWorldManager
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
@@ -18,6 +21,9 @@ class Place(
 ) {
 
     val placeWorldManager: PlaceWorldManager = PlaceWorldManager(this)
+    val scoreboardManager: ScoreboardManager = ScoreboardManager(this)
+    val countdownManager: CountdownManager = CountdownManager(this)
+    val cooldownTask: CooldownTask = CooldownTask(this)
     val cooledowns: MutableMap<UUID, Long> = mutableMapOf()
 
     init {
