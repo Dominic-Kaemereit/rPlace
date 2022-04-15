@@ -4,6 +4,7 @@ import de.d151l.place.plugin.countdown.CountdownManager
 import de.d151l.place.plugin.listener.BlockListener
 import de.d151l.place.plugin.listener.PlayerJoinListener
 import de.d151l.place.plugin.listener.PlayerQuitListener
+import de.d151l.place.plugin.listener.ProtectionListener
 import de.d151l.place.plugin.scorebord.ScoreboardManager
 import de.d151l.place.plugin.task.CooldownTask
 import de.d151l.place.plugin.world.PlaceWorldManager
@@ -33,6 +34,7 @@ class Place(
         pluginManager.registerEvents(PlayerJoinListener(this), this.javaPlugin)
         pluginManager.registerEvents(PlayerQuitListener(this), this.javaPlugin)
         pluginManager.registerEvents(BlockListener(this), this.javaPlugin)
+        pluginManager.registerEvents(ProtectionListener(this), this.javaPlugin)
 
     }
 
