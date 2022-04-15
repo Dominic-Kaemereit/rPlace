@@ -51,7 +51,6 @@ class ScoreboardManager(
 
             if (cooldowen == TimeUnit.SECONDS.toSeconds(1)) {
                 this.list[player.uniqueId]?.updateLine(5, "§8»§a 1 Sekunde")
-                player.sendMessage("Du musst noch eine Sekunde warten!")
             } else {
                 this.list[player.uniqueId]?.updateLine(5, "§8»§a $cooldowen Sekunden")
             }

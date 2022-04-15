@@ -34,6 +34,9 @@ class ProtectionListener(
 
     @EventHandler
     fun onPlayerInteract(event: PlayerInteractEvent) {
+        val clickedBlock = event.clickedBlock
+        if (clickedBlock != null)
+            return
         event.isCancelled = true
     }
 }
