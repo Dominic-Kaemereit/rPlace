@@ -60,6 +60,20 @@ class ScoreboardManager(
         this.list[player.uniqueId]?.updateLine(5, "§8»§a Bereit")
     }
 
+    fun updatePlayerCount() {
+        val size = Bukkit.getOnlinePlayers().size
+        val maxPlayers = Bukkit.getMaxPlayers()
+
+        val onlinePlayers = if (size >= maxPlayers) {
+            "§c${size}"
+        } else {
+            "§a${size}"
+        }
+        for (entry in this.list) {
+            entry.value.updateLine(11, "§8»§a ${onlinePlayers}§7/${maxPlayers}")
+        }
+    }
+
     fun removePlayer(player: Player) {
         this.list.remove(player.uniqueId)
     }

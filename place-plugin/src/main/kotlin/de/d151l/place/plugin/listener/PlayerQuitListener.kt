@@ -18,5 +18,6 @@ class PlayerQuitListener(
     fun onQuit(event: PlayerQuitEvent) {
         val player = event.player
         this.place.scoreboardManager.removePlayer(player)
+        this.place.scoreboardManager.updatePlayerCount()
     }
 }
