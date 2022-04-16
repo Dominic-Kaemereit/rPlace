@@ -25,9 +25,11 @@ class BlockListener(
         if (cooldowen > 0) {
 
             if (cooldowen == TimeUnit.SECONDS.toSeconds(1)) {
-                player.sendMessage("§8〣§arPlace §8» §7Du musst noch §c1§7 Sekunde warten!")
+                player.sendMessage(place.messagesConfig.blockWahteSecond.replace("%prefix%", place.messagesConfig.prefix))
             } else {
-                player.sendMessage("§8〣§arPlace §8» §7Du musst noch §c$cooldowen §7Sekunden warten!")
+                player.sendMessage(place.messagesConfig.blockWahteSeconds.replace("%prefix%", place.messagesConfig.prefix)
+                    .replace("%cooldowen%", cooldowen.toString()))
+
             }
             event.isCancelled = true
             return

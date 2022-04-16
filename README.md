@@ -7,5 +7,5 @@
 - [ ] MSQL Suupport
 - [ ] H2 Suupport
 - [ ] Ranking
-- [ ] Message Config
+- [x] Message Config
 - [x] Blocking Items Config

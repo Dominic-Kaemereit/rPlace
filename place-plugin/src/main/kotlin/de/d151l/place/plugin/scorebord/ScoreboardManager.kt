@@ -63,12 +63,12 @@ class ScoreboardManager(
         val cooldowen = this.place.countdownManager.getCooldowen(player)
         if (cooldowen > 0) {
             if (cooldowen == TimeUnit.SECONDS.toSeconds(1)) {
-                return "1 Sekunde"
+                return "1 " + this.place.messagesConfig.second
             } else {
-                return "$cooldowen Sekunden"
+                return  "$cooldowen " + this.place.messagesConfig.seconds
             }
         }
-        return "Bereit"
+        return this.place.messagesConfig.redy
     }
 
     private fun getOnlinePlayers(): String {

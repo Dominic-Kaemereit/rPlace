@@ -18,22 +18,22 @@ object BlockChecker {
         }
 
         if (!material.isBlock) {
-            player.sendMessage("§8〣§arPlace §8» §7Diesen Block darftst du §cnicht§7 platzieren!")
+            player.sendMessage(place.messagesConfig.blockPlaceNotAllow.replace("%prefix%", place.messagesConfig.prefix))
             return false
         }
 
         if (!material.isSolid) {
-            player.sendMessage("§8〣§arPlace §8» §7Diesen Block darftst du §cnicht§7 platzieren!")
+            player.sendMessage(place.messagesConfig.blockPlaceNotAllow.replace("%prefix%", place.messagesConfig.prefix))
             return false
         }
 
         if (block.type == material) {
-            player.sendMessage("§8〣§arPlace §8» §7Dieser Block wurde hier schon platziert!")
+            player.sendMessage(place.messagesConfig.blockAlreadyPlaced.replace("%prefix%", place.messagesConfig.prefix))
             return false
         }
 
-        if (Place.instance.blockingItems.blockingItems.contains(material.name)) {
-            player.sendMessage("§8〣§arPlace §8» §7Dieser Block wurde hier schon platziert!")
+        if (place.blockingItems.blockingItems.contains(material.name)) {
+            player.sendMessage(place.messagesConfig.blockPlaceNotAllow.replace("%prefix%", place.messagesConfig.prefix))
             return false
         }
 
