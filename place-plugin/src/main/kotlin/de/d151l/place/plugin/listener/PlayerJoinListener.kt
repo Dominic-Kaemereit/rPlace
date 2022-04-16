@@ -27,7 +27,7 @@ class PlayerJoinListener(
         player.teleport(this.place.placeWorldManager.world.spawnLocation.set(0.5, 101.0, 0.5))
         player.gameMode = GameMode.CREATIVE
 
-        val placePlayer = this.place.placePlayerCach.loadPlayer(player.uniqueId)
+        val placePlayer = this.place.placePlayerCach.loadPlayer(player)
         this.place.placePlayerCach.savePlayer(placePlayer)
         this.place.cooledowns[player.uniqueId] = placePlayer.getLastBlockRePlace()
 
