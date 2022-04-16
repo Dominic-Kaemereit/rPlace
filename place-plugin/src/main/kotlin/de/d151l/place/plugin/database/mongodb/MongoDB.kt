@@ -50,6 +50,11 @@ class MongoDB: DatabaseSupport {
         return gson.fromJson(document.toJson(), PlacePlayerImpl::class.java)
     }
 
+    override fun getPlacePlayerByName(name: String): PlacePlayer {
+        val document: Document = this.playerCollection.find(Filters.eq("name", name)).first()
+        return gson.fromJson(document.toJson(), PlacePlayerImpl::class.java)
+    }
+
     override fun savePlacePlayer(placePlayer: PlacePlayer) {
         val document = this.gson.fromJson(this.gson.toJson(placePlayer as PlacePlayerImpl), Document::class.java)
         this.playerCollection.replaceOne(Filters.eq("uuid", placePlayer.getUUID().toString()), document)

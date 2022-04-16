@@ -19,6 +19,8 @@ interface DatabaseSupport {
 
     fun getPlacePlayer(uuid: UUID): PlacePlayer
 
+    fun getPlacePlayerByName(name: String): PlacePlayer
+
     fun savePlacePlayer(placePlayer: PlacePlayer)
 
     fun createPlayerInDatabase(placePlayer: PlacePlayer)

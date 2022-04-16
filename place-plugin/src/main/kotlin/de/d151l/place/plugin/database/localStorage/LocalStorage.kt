@@ -84,6 +84,23 @@ class LocalStorage: DatabaseSupport {
         return player
     }
 
+    override fun getPlacePlayerByName(name: String): PlacePlayer {
+        val preparedStatement = connection
+            .prepareStatement("SELECT * FROM placePlayer WHERE name = ?")
+        preparedStatement.setString(1, name)
+
+        val resultSet: ResultSet = preparedStatement.executeQuery()
+
+        val player: PlacePlayerImpl = PlacePlayerImpl(
+            resultSet.getString("uuid"),
+            resultSet.getString("name")
+        )
+        player.setRanking(resultSet.getInt("ranking"))
+        player.setLastBlockRePlace(resultSet.getString("lastBlockRePlace").toLong())
+        player.setBlockToCount(resultSet.getInt("blocks"))
+        return player
+    }
+
     override fun savePlacePlayer(placePlayer: PlacePlayer) {
         val deleteStatement = connection
             .prepareStatement("DELETE FROM placePlayer WHERE uuid = ?")
