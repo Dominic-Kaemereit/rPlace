@@ -18,4 +18,8 @@ interface PlacePlayer {
     fun getLastBlockRePlace(): Long
 
     fun setLastBlockRePlace(time: Long)
+
+    fun getRanking(): Int
+
+    fun setRanking(ranking: Int)
 }

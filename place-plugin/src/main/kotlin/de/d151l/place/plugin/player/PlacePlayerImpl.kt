@@ -14,6 +14,7 @@ class PlacePlayerImpl(
 
     private var blocks: Int = 0
     private var lastBlockRePlace: Long = 0
+    private var ranking: Int = 0
 
     override fun getUUID(): UUID {
         return UUID.fromString(this.uuid)
@@ -33,5 +34,13 @@ class PlacePlayerImpl(
 
     override fun setLastBlockRePlace(time: Long) {
         this.lastBlockRePlace = time
+    }
+
+    override fun getRanking(): Int {
+        return this.ranking
+    }
+
+    override fun setRanking(ranking: Int) {
+        this.ranking = ranking
     }
 }

@@ -48,7 +48,7 @@ class ScoreboardManager(
                         .replace("%blocks%", placePlayer.getBlockCount().toString())
                         .replace("%onlinePlayers%", onlinePlayers)
                         .replace("%maxPlayers%", maxPlayers)
-                        .replace("%ranking%", "0")
+                        .replace("%ranking%", placePlayer.getRanking().toString())
                     )
                 }
             }

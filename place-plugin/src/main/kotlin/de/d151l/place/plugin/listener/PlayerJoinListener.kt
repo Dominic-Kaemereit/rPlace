@@ -23,6 +23,8 @@ class PlayerJoinListener(
         player.teleport(this.place.placeWorldManager.world.spawnLocation.set(0.5, 101.0, 0.5))
         player.gameMode = GameMode.CREATIVE
         val loadPlayer = this.place.placePlayerCach.loadPlayer(player.uniqueId)
+        loadPlayer.setRanking(this.place.databaseManager.database.getRanking(player.uniqueId))
+        this.place.placePlayerCach.savePlayer(loadPlayer)
         this.place.cooledowns[player.uniqueId] = loadPlayer.getLastBlockRePlace()
         this.place.scoreboardManager.setScoreBoard(player)
     }

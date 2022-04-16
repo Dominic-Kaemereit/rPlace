@@ -1,10 +1,12 @@
 package de.d151l.place.plugin.database.mongodb
 
+import com.google.common.collect.Lists
 import com.google.gson.Gson
 import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoClients
 import com.mongodb.client.MongoCollection
 import com.mongodb.client.model.Filters
+import com.mongodb.client.model.Sorts
 import de.d151l.place.api.block.BlockHistory
 import de.d151l.place.api.database.DatabaseSupport
 import de.d151l.place.api.player.PlacePlayer
@@ -12,6 +14,7 @@ import de.d151l.place.plugin.block.BlockHistoryImpl
 import de.d151l.place.plugin.player.PlacePlayerImpl
 import org.bson.Document
 import java.util.*
+
 
 /**
  * @created 15/04/2022 - 23:18
@@ -55,6 +58,18 @@ class MongoDB: DatabaseSupport {
     override fun createPlayerInDatabase(placePlayer: PlacePlayer) {
         val document = this.gson.fromJson(this.gson.toJson(placePlayer as PlacePlayerImpl), Document::class.java)
         this.playerCollection.insertOne(document)
+    }
+
+    override fun getRanking(uuid: UUID): Int {
+
+        val documents: List<Document> =
+            this.playerCollection.find().sort(Sorts.descending("blocks")).into(Lists.newArrayList())
+
+        for (current in documents) {
+            if (current["uuid"] == uuid.toString())
+                return (documents.indexOf(current) + 1)
+        }
+        return 0
     }
 
     override fun isBlockHistory(blockHistory: BlockHistory): Boolean {
