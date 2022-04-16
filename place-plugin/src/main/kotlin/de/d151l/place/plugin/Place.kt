@@ -35,7 +35,7 @@ class Place(
     val cooldownTask: CooldownTask = CooldownTask(this)
     val cooledowns: MutableMap<UUID, Long> = mutableMapOf()
 
-    val placeSize = 15.0
+    val placeSize = 31.0
     val blockHistoryCount: Int
 
     init {
@@ -52,7 +52,10 @@ class Place(
     }
 
     fun shutdown() {
-        Bukkit.getOnlinePlayers().forEach { it.kick(null) }
+        Bukkit.getOnlinePlayers().forEach {
+            this.placePlayerCach.unloadPlayer(it.uniqueId)
+            it.kick(null)
+        }
 
         this.databaseManager.database.closeConnection()
     }

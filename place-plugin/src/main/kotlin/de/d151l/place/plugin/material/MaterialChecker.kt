@@ -18,17 +18,17 @@ object MaterialChecker {
         }
 
         if (!material.isBlock) {
-            player.sendMessage("Diesen Block darftst du nicht platzieren!")
+            player.sendMessage("§8〣§arPlace §8» §7Diesen Block darftst du §cnicht§7 platzieren!")
             return false
         }
 
         if (!material.isSolid) {
-            player.sendMessage("Diesen Block darftst du nicht platzieren!")
+            player.sendMessage("§8〣§arPlace §8» §7Diesen Block darftst du §cnicht§7 platzieren!")
             return false
         }
 
         if (block.type == material) {
-            player.sendMessage("Dieser Block wurde hier schon platziert!")
+            player.sendMessage("§8〣§arPlace §8» §7Dieser Block wurde hier schon platziert!")
             return false
         }
 
