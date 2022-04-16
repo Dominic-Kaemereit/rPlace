@@ -1,4 +1,4 @@
-package de.d151l.place.plugin.material
+package de.d151l.place.plugin.block
 
 import de.d151l.place.plugin.Place
 import org.bukkit.Material
