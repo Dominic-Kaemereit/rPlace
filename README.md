@@ -4,4 +4,4 @@
 <hr>
 </div>
 
-- [x] Ranking in SQL
+- [] Better README
