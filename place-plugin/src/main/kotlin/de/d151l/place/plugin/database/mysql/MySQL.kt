@@ -108,9 +108,20 @@ class MySQL: DatabaseSupport {
         preparedStatement.executeUpdate()
     }
 
-    override fun getRanking(uuid: UUID): Int {
-        return 0
+    override fun getRanking(placePlayer: PlacePlayer): Int {
+        val preparedStatement = connection
+            .prepareStatement("SELECT * FROM placePlayer ORDER BY blocks DESC")
+
+        val resultSet: ResultSet = preparedStatement.executeQuery()
+        val placePlayers: MutableList<UUID> = mutableListOf()
+        while (resultSet.next()) {
+            placePlayers.add(UUID.fromString(resultSet.getString("uuid")))
+        }
+
+        val indexOf = placePlayers.indexOf(placePlayer.getUUID())
+        return (indexOf + 1)
     }
+
 
     override fun isBlockHistory(blockHistory: BlockHistory): Boolean {
         val preparedStatement = connection

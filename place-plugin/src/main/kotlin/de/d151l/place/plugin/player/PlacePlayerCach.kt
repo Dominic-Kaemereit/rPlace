@@ -19,14 +19,14 @@ class PlacePlayerCach(
     fun loadPlayer(player: Player): PlacePlayer {
         if (this.place.databaseManager.database.isPlayerRegistered(player.uniqueId)) {
             val placePlayer = this.place.databaseManager.database.getPlacePlayer(player.uniqueId)
-            placePlayer.setRanking(this.place.databaseManager.database.getRanking(player.uniqueId))
+            placePlayer.setRanking(this.place.databaseManager.database.getRanking(placePlayer))
             this.players[player.uniqueId] = placePlayer
             return placePlayer
         }
 
         val placePlayer: PlacePlayer = PlacePlayerImpl(player.uniqueId.toString(), player.name) as PlacePlayer
         this.place.databaseManager.database.createPlayerInDatabase(placePlayer)
-        placePlayer.setRanking(this.place.databaseManager.database.getRanking(player.uniqueId))
+        placePlayer.setRanking(this.place.databaseManager.database.getRanking(placePlayer))
         this.players[player.uniqueId] = placePlayer
         return placePlayer
     }

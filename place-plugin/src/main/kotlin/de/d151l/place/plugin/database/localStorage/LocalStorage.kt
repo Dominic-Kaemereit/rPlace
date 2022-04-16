@@ -6,6 +6,7 @@ import de.d151l.place.api.player.PlacePlayer
 import de.d151l.place.plugin.Place
 import de.d151l.place.plugin.block.BlockHistoryImpl
 import de.d151l.place.plugin.player.PlacePlayerImpl
+import org.bson.Document
 import java.io.File
 import java.sql.*
 import java.util.*
@@ -121,8 +122,18 @@ class LocalStorage: DatabaseSupport {
         preparedStatement.executeUpdate()
     }
 
-    override fun getRanking(uuid: UUID): Int {
-        return 0
+    override fun getRanking(placePlayer: PlacePlayer): Int {
+        val preparedStatement = connection
+            .prepareStatement("SELECT * FROM placePlayer ORDER BY blocks DESC")
+
+        val resultSet: ResultSet = preparedStatement.executeQuery()
+        val placePlayers: MutableList<UUID> = mutableListOf()
+        while (resultSet.next()) {
+            placePlayers.add(UUID.fromString(resultSet.getString("uuid")))
+        }
+
+        val indexOf = placePlayers.indexOf(placePlayer.getUUID())
+        return (indexOf + 1)
     }
 
     override fun isBlockHistory(blockHistory: BlockHistory): Boolean {

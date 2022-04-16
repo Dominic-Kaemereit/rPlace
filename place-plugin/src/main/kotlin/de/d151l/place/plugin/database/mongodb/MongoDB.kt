@@ -65,13 +65,13 @@ class MongoDB: DatabaseSupport {
         this.playerCollection.insertOne(document)
     }
 
-    override fun getRanking(uuid: UUID): Int {
+    override fun getRanking(placePlayer: PlacePlayer): Int {
 
         val documents: List<Document> =
             this.playerCollection.find().sort(Sorts.descending("blocks")).into(Lists.newArrayList())
 
         for (current in documents) {
-            if (current["uuid"] == uuid.toString())
+            if (current["uuid"] == placePlayer.getUUID().toString())
                 return (documents.indexOf(current) + 1)
         }
         return 0

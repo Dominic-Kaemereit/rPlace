@@ -25,7 +25,7 @@ interface DatabaseSupport {
 
     fun createPlayerInDatabase(placePlayer: PlacePlayer)
 
-    fun getRanking(uuid: UUID): Int
+    fun getRanking(placePlayer: PlacePlayer): Int
 
     fun isBlockHistory(blockHistory: BlockHistory): Boolean
 
