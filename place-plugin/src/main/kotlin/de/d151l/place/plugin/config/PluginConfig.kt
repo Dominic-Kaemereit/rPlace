@@ -38,8 +38,8 @@ class PluginConfig: Config() {
         "§8»§a #%ranking%"
     )
 
-    @Comment("H2, MYSQL und MONGODB sind die derzeit verfügbaren Datenbanktypen.")
-    val databaseType = DatabaseType.H2.name
+    @Comment("LOCALSTORAGE, MYSQL und MONGODB sind die derzeit verfügbaren Datenbanktypen.")
+    val databaseType = DatabaseType.LOCALSTORAGE.name
     val host = "127.0.0.1"
     val port = 1234
     val user = "root"

@@ -3,7 +3,7 @@ package de.d151l.place.plugin.database
 import de.d151l.place.api.database.DatabaseSupport
 import de.d151l.place.api.database.DatabaseType
 import de.d151l.place.plugin.Place
-import de.d151l.place.plugin.database.h2.H2
+import de.d151l.place.plugin.database.localStorage.LocalStorage
 import de.d151l.place.plugin.database.mongodb.MongoDB
 import de.d151l.place.plugin.database.mysql.MySQL
 
@@ -17,7 +17,7 @@ class DatabaseManager(
     private val databaseType: DatabaseType
 ) {
 
-    lateinit var database: DatabaseSupport
+    var database: DatabaseSupport
 
     init {
         if (this.databaseType == DatabaseType.MONGODB) {
@@ -25,7 +25,7 @@ class DatabaseManager(
         } else if (this.databaseType == DatabaseType.MYSQL) {
             this.database = MySQL()
         } else {
-            this.database = H2()
+            this.database = LocalStorage()
         }
 
         val config = this.place.config

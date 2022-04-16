@@ -8,5 +8,5 @@ package de.d151l.place.api.database
 enum class DatabaseType {
     MYSQL,
     MONGODB,
-    H2
+    LOCALSTORAGE
 }
