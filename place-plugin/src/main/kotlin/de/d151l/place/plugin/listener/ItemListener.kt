@@ -1,7 +1,9 @@
 package de.d151l.place.plugin.listener
 
 import de.d151l.place.plugin.Place
+import de.d151l.place.plugin.block.BlockChecker
 import org.bukkit.Bukkit
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
@@ -26,10 +28,42 @@ class ItemListener(
             if (item != null) {
                 if (checkIfItem(item)) {
 
-                    if (item.itemMeta.localizedName == "item-remover")
+                    if (item.itemMeta.localizedName == "item-remover") {
                         event.isCancelled = true
-                    if (item.itemMeta.localizedName == "item-checker")
+                        return
+                    }
+                    if (item.itemMeta.localizedName == "item-checker") {
                         event.isCancelled = true
+                        return
+                    }
+                }
+
+                if (!BlockChecker.check(place, event.whoClicked as Player, item.type)) {
+                    event.isCancelled = true
+                    return
+                }
+            }
+
+        }
+
+        if (event.cursor != null) {
+            val item = event.cursor
+            if (item != null) {
+                if (checkIfItem(item)) {
+
+                    if (item.itemMeta.localizedName == "item-remover") {
+                        event.isCancelled = true
+                        return
+                    }
+                    if (item.itemMeta.localizedName == "item-checker") {
+                        event.isCancelled = true
+                        return
+                    }
+                }
+
+                if (!BlockChecker.check(place, event.whoClicked as Player, item.type)) {
+                    event.isCancelled = true
+                    return
                 }
             }
         }

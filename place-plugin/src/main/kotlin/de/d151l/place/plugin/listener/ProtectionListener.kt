@@ -3,11 +3,12 @@ package de.d151l.place.plugin.listener
 import de.d151l.place.plugin.Place
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.block.BlockExplodeEvent
 import org.bukkit.event.block.BlockPhysicsEvent
 import org.bukkit.event.entity.EntitySpawnEvent
+import org.bukkit.event.entity.ExplosionPrimeEvent
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent
-import org.bukkit.event.player.PlayerDropItemEvent
-import org.bukkit.event.player.PlayerInteractEvent
+
 
 /**
  * @created 15/04/2022 - 22:05
@@ -25,6 +26,16 @@ class ProtectionListener(
 
     @EventHandler
     fun onPhysics(event: BlockPhysicsEvent) {
+        event.isCancelled = true
+    }
+
+    @EventHandler
+    fun onExplosionPrime(event: ExplosionPrimeEvent) {
+        event.isCancelled = true
+    }
+
+    @EventHandler
+    fun onBlockExplode(event: BlockExplodeEvent) {
         event.isCancelled = true
     }
 

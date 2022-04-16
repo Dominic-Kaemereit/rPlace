@@ -20,6 +20,13 @@ class BlockListener(
     @EventHandler
     fun onBlockBreak(event: BlockBreakEvent) {
         val player = event.player
+        val block = event.block
+
+        if (block.location.blockY != 100) {
+            event.isCancelled = true
+            return
+        }
+
         val cooldowen = this.place.countdownManager.getCooldowen(player)
 
         if (cooldowen > 0) {
@@ -38,7 +45,7 @@ class BlockListener(
         val type = player.inventory.itemInMainHand.type
         event.isCancelled = true
 
-        val successful = BlockChecker.check(this.place, player, event.block, type)
+        val successful = BlockChecker.check(this.place, player, block, type)
 
         if (!successful)
             return
@@ -46,10 +53,10 @@ class BlockListener(
         this.place.cooledowns[player.uniqueId] = (System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(
             this.place.config.blockCooldown.toLong()
         ))
-        event.block.type = type
+        block.type = type
 
         this.place.placePlayerCach.getPlayer(player.uniqueId)?.addBlockToCount()
-        this.place.blockHistoryManager.addBlock(player, event.block.location)
+        this.place.blockHistoryManager.addBlock(player, block.location)
     }
 
     @EventHandler
