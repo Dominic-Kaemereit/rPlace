@@ -1,4 +1,4 @@
-rootProject.name = 'R-Place'
+rootProject.name = 'rPlace'
 include 'place-api'
 include 'place-plugin'
 
