@@ -17,7 +17,7 @@ class PluginConfig: Config() {
     val blockCooldown = 21
 
     @Comment("The worldBorderSize must be an odd number. (1, 7, 15, 31, 101, 1001...)")
-    val worldBorderSize = 31.0
+    val worldBorderSize = 313.0
 
     val scoreboardTitle = "§lDEINSERVER.NET"
     val scoreboard: List<String> = mutableListOf(
