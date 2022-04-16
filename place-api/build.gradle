@@ -2,6 +2,10 @@ dependencies {
     compileOnly(files("../libs/paper.jar"))
 }
 
+dependencies {
+    compileOnly(files("../../libs/paper.jar"))
+
+}
 test {
     useJUnitPlatform()
 }

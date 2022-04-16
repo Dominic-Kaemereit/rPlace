@@ -2,6 +2,7 @@ package de.d151l.place.plugin
 
 import com.twodevsstudio.simplejsonconfig.SimpleJSONConfig
 import com.twodevsstudio.simplejsonconfig.api.Config
+import de.d151l.place.plugin.util.Metrics
 import de.d151l.place.api.database.DatabaseType
 import de.d151l.place.plugin.block.BlockHistoryManager
 import de.d151l.place.plugin.command.CheckBlockCommand
@@ -72,6 +73,9 @@ class Place(
 
         this.placeWorldManager.setWorldBorder()
         this.blockHistoryCount = this.databaseManager.database.getBlockHistoryCount()
+
+        val metrics: Metrics =
+            Metrics(this.javaPlugin, 14956)
     }
 
     fun shutdown() {

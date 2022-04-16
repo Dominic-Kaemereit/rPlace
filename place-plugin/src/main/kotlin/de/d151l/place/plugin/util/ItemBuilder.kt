@@ -1,4 +1,4 @@
-package de.d151l.place.plugin
+package de.d151l.place.plugin.util
 
 import com.destroystokyo.paper.Namespaced
 import com.google.common.collect.Multimap

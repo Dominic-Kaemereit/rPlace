@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly(files("../libs/paper.jar"))
+    compileOnly(files("../../libs/paper.jar"))
     implementation(project(":place-api"))
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
 
