@@ -1,6 +1,7 @@
 package de.d151l.place.plugin.config
 
 import com.twodevsstudio.simplejsonconfig.api.Config
+import com.twodevsstudio.simplejsonconfig.interfaces.Comment
 import com.twodevsstudio.simplejsonconfig.interfaces.Configuration
 
 /**
@@ -18,6 +19,7 @@ class MessageConfig: Config() {
     val blockWahteSeconds = "%prefix%Du musst noch §c%cooldowen% §7Sekunden warten!"
     val blockWahteSecond = "%prefix%Du musst noch §c1 §7Sekunde warten!"
 
+    @Comment("This is for the scoreboard and not for player messages.")
     val seconds = "Sekunden"
     val second = "Sekunde"
     val redy = "Bereit"
