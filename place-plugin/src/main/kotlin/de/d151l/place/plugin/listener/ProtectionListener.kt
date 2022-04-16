@@ -1,14 +1,10 @@
 package de.d151l.place.plugin.listener
 
 import de.d151l.place.plugin.Place
-import de.d151l.place.plugin.material.MaterialChecker
-import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockPhysicsEvent
 import org.bukkit.event.entity.EntitySpawnEvent
-import org.bukkit.event.inventory.InventoryAction
-import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent
 import org.bukkit.event.player.PlayerInteractEvent
 
