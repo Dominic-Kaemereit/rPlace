@@ -56,6 +56,10 @@ class MySQL: DatabaseSupport {
         TODO("Not yet implemented")
     }
 
+    override fun deleteBlockHistory(blockHistory: BlockHistory) {
+        TODO("Not yet implemented")
+    }
+
     override fun getBlockHistoryCount(): Int {
         TODO("Not yet implemented")
     }

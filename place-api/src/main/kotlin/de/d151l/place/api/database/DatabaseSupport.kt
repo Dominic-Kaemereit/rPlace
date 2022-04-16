@@ -33,5 +33,7 @@ interface DatabaseSupport {
 
     fun updateBlockHistory(blockHistory: BlockHistory)
 
+    fun deleteBlockHistory(blockHistory: BlockHistory)
+
     fun getBlockHistoryCount(): Int
 }

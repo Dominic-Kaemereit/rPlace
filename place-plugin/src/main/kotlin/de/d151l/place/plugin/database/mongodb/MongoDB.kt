@@ -93,6 +93,10 @@ class MongoDB: DatabaseSupport {
         this.blockCollection.replaceOne(Filters.eq("location", blockHistory.getLocation()), document)
     }
 
+    override fun deleteBlockHistory(blockHistory: BlockHistory) {
+        this.blockCollection.deleteOne(Filters.eq("location", blockHistory.getLocation()))
+    }
+
     override fun getBlockHistoryCount(): Int {
         return this.blockCollection.find().count()
     }

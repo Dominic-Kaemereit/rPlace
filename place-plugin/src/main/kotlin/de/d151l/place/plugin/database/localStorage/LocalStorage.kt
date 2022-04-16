@@ -141,11 +141,15 @@ class LocalStorage: DatabaseSupport {
     }
 
     override fun updateBlockHistory(blockHistory: BlockHistory) {
+        deleteBlockHistory(blockHistory)
+        addBlockHistory(blockHistory)
+    }
+
+    override fun deleteBlockHistory(blockHistory: BlockHistory) {
         val deleteStatement = connection
             .prepareStatement("DELETE FROM placeBlockHistory WHERE location = ?")
         deleteStatement.setString(1, blockHistory.getLocation())
         deleteStatement.executeUpdate()
-        addBlockHistory(blockHistory)
     }
 
     override fun getBlockHistoryCount(): Int {
