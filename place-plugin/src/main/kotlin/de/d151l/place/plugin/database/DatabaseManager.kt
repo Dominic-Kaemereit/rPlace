@@ -3,7 +3,9 @@ package de.d151l.place.plugin.database
 import de.d151l.place.api.database.DatabaseSupport
 import de.d151l.place.api.database.DatabaseType
 import de.d151l.place.plugin.Place
+import de.d151l.place.plugin.database.h2.H2
 import de.d151l.place.plugin.database.mongodb.MongoDB
+import de.d151l.place.plugin.database.mysql.MySQL
 
 /**
  * @created 15/04/2022 - 23:36
@@ -20,6 +22,10 @@ class DatabaseManager(
     init {
         if (this.databaseType == DatabaseType.MONGODB) {
             this.database = MongoDB()
+        } else if (this.databaseType == DatabaseType.MYSQL) {
+            this.database = MySQL()
+        } else {
+            this.database = H2()
         }
 
         val config = this.place.config

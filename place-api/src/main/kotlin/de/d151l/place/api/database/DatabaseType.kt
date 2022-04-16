@@ -6,7 +6,7 @@ package de.d151l.place.api.database
  * @author  D151l
  */
 enum class DatabaseType {
-    SQL,
+    MYSQL,
     MONGODB,
     H2
 }
