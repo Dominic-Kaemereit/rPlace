@@ -19,29 +19,14 @@ class MySQL: DatabaseSupport {
 
     override fun connect(host: String, port: Int, user: String, password: String, database: String) {
         try {
-            val connectionUrl = ("jdbc:sqlserver://$host:$port;"
-                    + "database=$database;"
-                    + "user=$user@$host;"
-                    + "password=$password;"
-                    + "encrypt=true;"
-                    + "trustServerCertificate=false;"
-                    + "loginTimeout=30;")
-            this.connection = DriverManager.getConnection(connectionUrl);
+            val connectionUrl = "jdbc:mysql://$host:3306/$database?autoReconnect=true"
+            this.connection = DriverManager.getConnection(connectionUrl, user, password);
             val statement: Statement = connection.createStatement();
             statement.executeUpdate(
-                "CREATE TABLE IF NOT EXISTS placePlayer(" +
-                        "uuid VARCHAR NOT NULL," +
-                        "name VARCHAR NOT NULL," +
-                        "blocks INTEGER NOT NULL," +
-                        "lastBlockRePlace VARCHAR NOT NULL," +
-                        "ranking INTEGER NOT NULL," +
-                        "UNIQUE(uuid) ON CONFLICT REPLACE)"
+                "CREATE TABLE IF NOT EXISTS placePlayer(uuid VARCHAR(36), name VARCHAR(36), blocks INTEGER, lastBlockRePlace VARCHAR(36), ranking INTEGER)"
             );
             statement.executeUpdate(
-                "CREATE TABLE IF NOT EXISTS placeBlockHistory(" +
-                        "uuid VARCHAR NOT NULL," +
-                        "time VARCHAR NOT NULL," +
-                        "location VARCHAR NOT NULL)"
+                "CREATE TABLE IF NOT EXISTS placeBlockHistory(uuid VARCHAR(36), time VARCHAR(36), location VARCHAR(36))"
             );
         } catch (exception: SQLException) {
             exception.printStackTrace();
@@ -73,9 +58,10 @@ class MySQL: DatabaseSupport {
         preparedStatement.setString(1, uuid.toString())
 
         val resultSet: ResultSet = preparedStatement.executeQuery()
+        resultSet.next()
 
         val player: PlacePlayerImpl = PlacePlayerImpl(
-            resultSet.getString("uuid"),
+            resultSet.getObject("uuid") as String,
             resultSet.getString("name")
         )
         player.setRanking(resultSet.getInt("ranking"))
@@ -90,6 +76,7 @@ class MySQL: DatabaseSupport {
         preparedStatement.setString(1, name)
 
         val resultSet: ResultSet = preparedStatement.executeQuery()
+        resultSet.next()
 
         val player: PlacePlayerImpl = PlacePlayerImpl(
             resultSet.getString("uuid"),
@@ -152,6 +139,7 @@ class MySQL: DatabaseSupport {
         preparedStatement.setString(1, location)
 
         val resultSet: ResultSet = preparedStatement.executeQuery()
+        resultSet.next()
 
         return BlockHistoryImpl(
             resultSet.getString("uuid"),
