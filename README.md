@@ -4,8 +4,4 @@
 <hr>
 </div>
 
-- [ ] MSQL Suupport
-- [ ] H2 Suupport
-- [ ] Ranking
-- [x] Message Config
-- [x] Blocking Items Config
+- [ ] Ranking in SQL
