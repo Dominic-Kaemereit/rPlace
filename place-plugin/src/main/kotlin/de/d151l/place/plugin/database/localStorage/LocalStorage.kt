@@ -111,7 +111,7 @@ class LocalStorage: DatabaseSupport {
 
     override fun createPlayerInDatabase(placePlayer: PlacePlayer) {
         val preparedStatement: PreparedStatement = connection
-            .prepareStatement("INSERT INTO placePlayer(uuid, namem blocks, lastBlockRePlace, ranking) VALUES (?, ?, ?, ?, ?)")
+            .prepareStatement("INSERT INTO placePlayer(uuid, name, blocks, lastBlockRePlace, ranking) VALUES (?, ?, ?, ?, ?)")
         preparedStatement.setString(1, placePlayer.getUUID().toString())
         preparedStatement.setString(2, placePlayer.getName())
         preparedStatement.setInt(3, placePlayer.getBlockCount())
