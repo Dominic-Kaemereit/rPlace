@@ -126,10 +126,10 @@ class LocalStorage: DatabaseSupport {
         preparedStatement.executeUpdate()
     }
 
-    override fun getBlockHistory(blockHistory: BlockHistory): BlockHistory {
+    override fun getBlockHistory(location: String): BlockHistory {
         val preparedStatement = connection
             .prepareStatement("SELECT * FROM placeBlockHistory WHERE location = ?")
-        preparedStatement.setString(1, blockHistory.getLocation())
+        preparedStatement.setString(1, location)
 
         val resultSet: ResultSet = preparedStatement.executeQuery()
 

@@ -4,6 +4,8 @@ import com.twodevsstudio.simplejsonconfig.SimpleJSONConfig
 import com.twodevsstudio.simplejsonconfig.api.Config
 import de.d151l.place.api.database.DatabaseType
 import de.d151l.place.plugin.block.BlockHistoryManager
+import de.d151l.place.plugin.command.CheckBlockCommand
+import de.d151l.place.plugin.command.RemoveBlockCommand
 import de.d151l.place.plugin.config.BlockingItemsConfig
 import de.d151l.place.plugin.config.MessageConfig
 import de.d151l.place.plugin.config.PluginConfig
@@ -64,6 +66,9 @@ class Place(
         pluginManager.registerEvents(BlockListener(this), this.javaPlugin)
         pluginManager.registerEvents(ProtectionListener(this), this.javaPlugin)
         pluginManager.registerEvents(ItemListener(this), this.javaPlugin)
+
+        this.javaPlugin.getCommand("removeBlock")?.setExecutor(RemoveBlockCommand(this))
+        this.javaPlugin.getCommand("checkBlock")?.setExecutor(CheckBlockCommand(this))
 
         this.placeWorldManager.setWorldBorder()
         this.blockHistoryCount = this.databaseManager.database.getBlockHistoryCount()

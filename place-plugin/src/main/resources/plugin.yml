@@ -4,3 +4,9 @@ version: 1.0.0
 api-version: 1.18
 
 main: de.d151l.place.plugin.plugin.SpigotPlugin
+
+commands:
+  removeBlock:
+    permission: place.command.remove.block
+  checkBlock:
+    permission: place.command.check.block

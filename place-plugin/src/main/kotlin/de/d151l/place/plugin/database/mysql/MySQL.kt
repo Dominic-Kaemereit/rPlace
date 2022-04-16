@@ -48,7 +48,7 @@ class MySQL: DatabaseSupport {
         TODO("Not yet implemented")
     }
 
-    override fun getBlockHistory(blockHistory: BlockHistory): BlockHistory {
+    override fun getBlockHistory(location: String): BlockHistory {
         TODO("Not yet implemented")
     }
 

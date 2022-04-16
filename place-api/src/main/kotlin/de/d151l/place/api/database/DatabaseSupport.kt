@@ -29,7 +29,7 @@ interface DatabaseSupport {
 
     fun addBlockHistory(blockHistory: BlockHistory)
 
-    fun getBlockHistory(blockHistory: BlockHistory): BlockHistory
+    fun getBlockHistory(location: String): BlockHistory
 
     fun updateBlockHistory(blockHistory: BlockHistory)
 

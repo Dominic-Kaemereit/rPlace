@@ -83,8 +83,8 @@ class MongoDB: DatabaseSupport {
         this.blockCollection.insertOne(document)
     }
 
-    override fun getBlockHistory(blockHistory: BlockHistory): BlockHistory {
-        val document: Document = this.blockCollection.find(Filters.eq("location", blockHistory.getLocation())).first() as Document
+    override fun getBlockHistory(location: String): BlockHistory {
+        val document: Document = this.blockCollection.find(Filters.eq("location", location)).first() as Document
         return gson.fromJson(document.toJson(), BlockHistoryImpl::class.java)
     }
 
