@@ -1,7 +1,7 @@
 package de.d151l.place.plugin.listener
 
 import de.d151l.place.plugin.Place
-import de.d151l.place.plugin.block.MaterialChecker
+import de.d151l.place.plugin.block.BlockChecker
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
@@ -36,7 +36,7 @@ class BlockListener(
         val type = player.inventory.itemInMainHand.type
         event.isCancelled = true
 
-        val successful = MaterialChecker.check(this.place, player, event.block, type)
+        val successful = BlockChecker.check(this.place, player, event.block, type)
 
         if (!successful)
             return

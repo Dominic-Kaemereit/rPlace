@@ -4,6 +4,7 @@ import com.twodevsstudio.simplejsonconfig.SimpleJSONConfig
 import com.twodevsstudio.simplejsonconfig.api.Config
 import de.d151l.place.api.database.DatabaseType
 import de.d151l.place.plugin.block.BlockHistoryManager
+import de.d151l.place.plugin.config.BlockingItemsConfig
 import de.d151l.place.plugin.config.PluginConfig
 import de.d151l.place.plugin.countdown.CountdownManager
 import de.d151l.place.plugin.database.DatabaseManager
@@ -29,6 +30,7 @@ class Place(
 ) {
 
     val config: PluginConfig
+    val blockingItems: BlockingItemsConfig
 
     val placeWorldManager: PlaceWorldManager
     val scoreboardManager: ScoreboardManager
@@ -46,6 +48,7 @@ class Place(
         instance = this
         SimpleJSONConfig.INSTANCE.register(this.javaPlugin, this.javaPlugin.dataFolder)
         this.config = Config.getConfig(PluginConfig::class.java)
+        this.blockingItems = Config.getConfig(BlockingItemsConfig::class.java)
 
         this.placeWorldManager = PlaceWorldManager(this)
         this.scoreboardManager = ScoreboardManager(this)

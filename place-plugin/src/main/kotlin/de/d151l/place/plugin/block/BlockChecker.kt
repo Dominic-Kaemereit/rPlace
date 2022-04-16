@@ -10,7 +10,7 @@ import org.bukkit.entity.Player
  * @project R-Place
  * @author  D151l
  */
-object MaterialChecker {
+object BlockChecker {
 
     fun check(place: Place, player: Player, block: Block, material: Material): Boolean {
         if (material.isAir) {
@@ -28,6 +28,11 @@ object MaterialChecker {
         }
 
         if (block.type == material) {
+            player.sendMessage("§8〣§arPlace §8» §7Dieser Block wurde hier schon platziert!")
+            return false
+        }
+
+        if (Place.instance.blockingItems.blockingItems.contains(material.name)) {
             player.sendMessage("§8〣§arPlace §8» §7Dieser Block wurde hier schon platziert!")
             return false
         }

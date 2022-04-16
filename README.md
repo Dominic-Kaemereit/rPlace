@@ -8,4 +8,4 @@
 - [ ] H2 Suupport
 - [ ] Ranking
 - [ ] Message Config
-- [ ] Blocking Items Config
+- [x] Blocking Items Config
