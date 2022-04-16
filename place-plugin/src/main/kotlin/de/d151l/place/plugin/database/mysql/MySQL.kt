@@ -28,6 +28,10 @@ class MySQL: DatabaseSupport {
         TODO("Not yet implemented")
     }
 
+    override fun getPlacePlayerByName(name: String): PlacePlayer {
+        TODO("Not yet implemented")
+    }
+
     override fun savePlacePlayer(placePlayer: PlacePlayer) {
         TODO("Not yet implemented")
     }
