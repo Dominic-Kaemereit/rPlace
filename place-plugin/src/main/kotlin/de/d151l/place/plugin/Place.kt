@@ -53,10 +53,11 @@ class Place(
         this.blockingItems = Config.getConfig(BlockingItemsConfig::class.java)
         this.messagesConfig = Config.getConfig(MessageConfig::class.java)
 
+        this.databaseManager = DatabaseManager(this, DatabaseType.valueOf(this.config.databaseType))
+
         this.placeWorldManager = PlaceWorldManager(this)
         this.scoreboardManager = ScoreboardManager(this)
         this.countdownManager = CountdownManager(this)
-        this.databaseManager = DatabaseManager(this, DatabaseType.valueOf(this.config.databaseType))
         this.placePlayerCach = PlacePlayerCach(this)
         this.blockHistoryManager = BlockHistoryManager(this)
 
