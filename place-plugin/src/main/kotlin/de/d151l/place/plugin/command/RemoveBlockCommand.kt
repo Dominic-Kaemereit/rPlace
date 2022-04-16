@@ -28,7 +28,7 @@ class RemoveBlockCommand(
 
         if (!this.place.blockHistoryManager.hasBlockanHistory(targetBlock)) {
             player.sendMessage(place.messagesConfig.blockHasNoHistory.replace("%prefix%", place.messagesConfig.prefix))
-            player.playSound(targetBlock.location, Sound.ENTITY_STRIDER_EAT, 1f, 1f)
+            player.playSound(targetBlock.location, Sound.valueOf(this.place.config.blockHasNoHistorySound), 1f, 1f)
             return false
         }
 

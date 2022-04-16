@@ -38,6 +38,13 @@ class PluginConfig: Config() {
         "§8»§a #%ranking%"
     )
 
+    @Comment("List of sounds: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html")
+    val blockHasNoHistorySound = "ENTITY_STRIDER_EAT"
+
+    @Comment("List of materials: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html")
+    val itemRemoverMaterial = "STICK"
+    val itemCheckerMaterial = "END_ROD"
+
     @Comment("LOCALSTORAGE, MYSQL and MONGODB are the database types currently available.")
     val databaseType = DatabaseType.LOCALSTORAGE.name
     val host = "127.0.0.1"

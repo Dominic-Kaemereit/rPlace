@@ -35,12 +35,12 @@ class PlayerJoinListener(
 
     private fun addItems(player: Player) {
         if (player.hasPermission("place.item.remover"))
-            player.inventory.setItem(7, ItemBuilder(Material.STICK)
+            player.inventory.setItem(7, ItemBuilder(Material.valueOf(this.place.config.itemRemoverMaterial))
                 .setDisplayName(this.place.messagesConfig.itemBlockRemoverName)
                 .setLocalizedName("item-remover")
                 .build())
         if (player.hasPermission("place.item.checker"))
-            player.inventory.setItem(8, ItemBuilder(Material.END_ROD)
+            player.inventory.setItem(8, ItemBuilder(Material.valueOf(this.place.config.itemCheckerMaterial))
                 .setDisplayName(this.place.messagesConfig.itemBlockCheckerName)
                 .setLocalizedName("item-checker")
                 .build())
