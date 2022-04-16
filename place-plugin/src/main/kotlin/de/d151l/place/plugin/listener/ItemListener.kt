@@ -49,6 +49,10 @@ class ItemListener(
                 }
             }
         }
+
+        if (event.hasBlock())
+            return
+
         event.isCancelled = true
     }
 
