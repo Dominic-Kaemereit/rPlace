@@ -1,8 +1,11 @@
 package de.d151l.place.plugin.listener
 
+import de.d151l.place.plugin.ItemBuilder
 import de.d151l.place.plugin.Place
 import org.bukkit.Bukkit
 import org.bukkit.GameMode
+import org.bukkit.Material
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
@@ -20,12 +23,28 @@ class PlayerJoinListener(
     @EventHandler
     fun onJoin(event: PlayerJoinEvent) {
         val player = event.player
+
         player.teleport(this.place.placeWorldManager.world.spawnLocation.set(0.5, 101.0, 0.5))
         player.gameMode = GameMode.CREATIVE
-        val loadPlayer = this.place.placePlayerCach.loadPlayer(player.uniqueId)
-        loadPlayer.setRanking(this.place.databaseManager.database.getRanking(player.uniqueId))
-        this.place.placePlayerCach.savePlayer(loadPlayer)
-        this.place.cooledowns[player.uniqueId] = loadPlayer.getLastBlockRePlace()
+
+        val placePlayer = this.place.placePlayerCach.loadPlayer(player.uniqueId)
+        this.place.placePlayerCach.savePlayer(placePlayer)
+        this.place.cooledowns[player.uniqueId] = placePlayer.getLastBlockRePlace()
+
         this.place.scoreboardManager.setScoreBoard(player)
+        addItems(player)
+    }
+
+    private fun addItems(player: Player) {
+        if (player.hasPermission("place.item.remover"))
+            player.inventory.setItem(7, ItemBuilder(Material.STICK)
+                .setDisplayName(this.place.messagesConfig.itemBlockRemoverName)
+                .setLocalizedName("item-remover")
+                .build())
+        if (player.hasPermission("place.item.checker"))
+            player.inventory.setItem(8, ItemBuilder(Material.END_ROD)
+                .setDisplayName(this.place.messagesConfig.itemBlockCheckerName)
+                .setLocalizedName("item-checker")
+                .build())
     }
 }

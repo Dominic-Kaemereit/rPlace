@@ -9,13 +9,10 @@ import de.d151l.place.plugin.config.MessageConfig
 import de.d151l.place.plugin.config.PluginConfig
 import de.d151l.place.plugin.countdown.CountdownManager
 import de.d151l.place.plugin.database.DatabaseManager
-import de.d151l.place.plugin.listener.BlockListener
-import de.d151l.place.plugin.listener.PlayerJoinListener
-import de.d151l.place.plugin.listener.PlayerQuitListener
-import de.d151l.place.plugin.listener.ProtectionListener
 import de.d151l.place.plugin.player.PlacePlayerCach
 import de.d151l.place.plugin.scorebord.ScoreboardManager
 import de.d151l.place.plugin.countdown.CooldownTask
+import de.d151l.place.plugin.listener.*
 import de.d151l.place.plugin.world.PlaceWorldManager
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
@@ -66,6 +63,7 @@ class Place(
         pluginManager.registerEvents(PlayerQuitListener(this), this.javaPlugin)
         pluginManager.registerEvents(BlockListener(this), this.javaPlugin)
         pluginManager.registerEvents(ProtectionListener(this), this.javaPlugin)
+        pluginManager.registerEvents(ItemListener(this), this.javaPlugin)
 
         this.placeWorldManager.setWorldBorder()
         this.blockHistoryCount = this.databaseManager.database.getBlockHistoryCount()

@@ -6,6 +6,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockPhysicsEvent
 import org.bukkit.event.entity.EntitySpawnEvent
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent
+import org.bukkit.event.player.PlayerDropItemEvent
 import org.bukkit.event.player.PlayerInteractEvent
 
 /**
@@ -29,14 +30,6 @@ class ProtectionListener(
 
     @EventHandler
     fun onEntitySpawn(event: EntitySpawnEvent) {
-        event.isCancelled = true
-    }
-
-    @EventHandler
-    fun onPlayerInteract(event: PlayerInteractEvent) {
-        val clickedBlock = event.clickedBlock
-        if (clickedBlock != null)
-            return
         event.isCancelled = true
     }
 }

@@ -23,4 +23,7 @@ class MessageConfig: Config() {
     val seconds = "Sekunden"
     val second = "Sekunde"
     val redy = "Bereit"
+
+    val itemBlockRemoverName = "§cBlock Entferner §8«"
+    val itemBlockCheckerName = "§eBlock Untersuchen §8«"
 }
