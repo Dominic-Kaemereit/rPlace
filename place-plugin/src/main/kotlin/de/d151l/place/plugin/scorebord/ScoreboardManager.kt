@@ -53,9 +53,7 @@ class ScoreboardManager(
                 }
             }
 
-            if (fastBoard != null) {
-                fastBoard.updateLines(tempList)
-            }
+            fastBoard?.updateLines(tempList)
         }
     }
 
