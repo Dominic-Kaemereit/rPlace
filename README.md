@@ -4,4 +4,4 @@
 <hr>
 </div>
 
-- [ ] Ranking in SQL
+- [x] Ranking in SQL
