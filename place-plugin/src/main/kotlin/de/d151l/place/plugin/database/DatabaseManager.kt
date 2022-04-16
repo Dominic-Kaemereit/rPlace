@@ -2,6 +2,7 @@ package de.d151l.place.plugin.database
 
 import de.d151l.place.api.database.DatabaseSupport
 import de.d151l.place.api.database.DatabaseType
+import de.d151l.place.plugin.Place
 import de.d151l.place.plugin.database.mongodb.MongoDB
 
 /**
@@ -10,7 +11,8 @@ import de.d151l.place.plugin.database.mongodb.MongoDB
  * @author  D151l
  */
 class DatabaseManager(
-private val databaseType: DatabaseType
+    private val place: Place,
+    private val databaseType: DatabaseType
 ) {
 
     lateinit var database: DatabaseSupport
@@ -20,6 +22,7 @@ private val databaseType: DatabaseType
             this.database = MongoDB()
         }
 
-        this.database.connect("127.0.0.1", 27017, "admin", "test123", "admin")
+        val config = this.place.config
+        this.database.connect(config.host, config.port, config.user, config.password, config.databaseName)
     }
 }

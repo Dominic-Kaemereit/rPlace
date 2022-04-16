@@ -25,6 +25,5 @@ class PlayerJoinListener(
         val loadPlayer = this.place.placePlayerCach.loadPlayer(player.uniqueId)
         this.place.cooledowns[player.uniqueId] = loadPlayer.getLastBlockRePlace()
         this.place.scoreboardManager.setScoreBoard(player)
-        this.place.scoreboardManager.updatePlayerCount()
     }
 }

@@ -24,6 +24,5 @@ class PlayerQuitListener(
         }
         this.place.placePlayerCach.unloadPlayer(player.uniqueId)
         this.place.scoreboardManager.removePlayer(player)
-        this.place.scoreboardManager.updatePlayerCount()
     }
 }

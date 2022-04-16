@@ -20,52 +20,58 @@ class ScoreboardManager(
 
     fun setScoreBoard(player: Player) {
         val bord = FastBoard(player)
-        val placePlayer = this.place.placePlayerCach.getPlayer(player.uniqueId)
 
-        val placeSize = this.place.placeSize
-        val max: Double = placeSize*placeSize
-
-        bord.updateTitle("§lDEINSERVER.NET")
-        if (placePlayer != null) {
-            bord.updateLines(
-                "",
-                "§7Fortschritt",
-                "§8»§a ${this.place.roundNumber(this.place.blockHistoryCount, max)}%",
-                "",
-                "§7Countdown",
-                "§8»§a Bereit",
-                "",
-                "§7Deine Blöcke",
-                "§8»§a ${placePlayer.getBlockCount()}",
-                "",
-                "§7Spieler",
-                "§8»§a ${Bukkit.getOnlinePlayers().size}§7/${Bukkit.getMaxPlayers()}",
-                "",
-                "§7Deine Platzierung",
-                "§8»§a #0"
-            )
-        }
+        bord.updateTitle(this.place.config.scoreboardTitle)
+        bord.updateLines(this.place.config.scoreboard)
 
         this.list[player.uniqueId] = bord
     }
 
-    fun updateCountdown(player: Player) {
+    fun updateScoreBoard() {
+        val boarderSize = this.place.config.worldBorderSize
+        val max: Double = boarderSize*boarderSize
 
-        val cooldowen = this.place.countdownManager.getCooldowen(player)
+        val progress = (Math.round((this.place.blockHistoryCount / max * 100)*100.0) / 100.0).toString()
+        val onlinePlayers = getOnlinePlayers()
+        val maxPlayers = Bukkit.getMaxPlayers().toString()
 
-        if (cooldowen > 0) {
+        for (player in Bukkit.getOnlinePlayers()) {
+            val fastBoard = this.list[player.uniqueId]
+            val tempList: MutableList<String> = mutableListOf()
+            val placePlayer = this.place.placePlayerCach.getPlayer(player.uniqueId)
 
-            if (cooldowen == TimeUnit.SECONDS.toSeconds(1)) {
-                this.list[player.uniqueId]?.updateLine(5, "§8»§a 1 Sekunde")
-            } else {
-                this.list[player.uniqueId]?.updateLine(5, "§8»§a $cooldowen Sekunden")
+            for (line in this.place.config.scoreboard) {
+                if (placePlayer != null) {
+                    tempList.add(line
+                        .replace("%progress%", progress)
+                        .replace("%cooldown%", getCountdown(player))
+                        .replace("%blocks%", placePlayer.getBlockCount().toString())
+                        .replace("%onlinePlayers%", onlinePlayers)
+                        .replace("%maxPlayers%", maxPlayers)
+                        .replace("%ranking%", "0")
+                    )
+                }
             }
-            return
+
+            if (fastBoard != null) {
+                fastBoard.updateLines(tempList)
+            }
         }
-        this.list[player.uniqueId]?.updateLine(5, "§8»§a Bereit")
     }
 
-    fun updatePlayerCount() {
+    private fun getCountdown(player: Player):String {
+        val cooldowen = this.place.countdownManager.getCooldowen(player)
+        if (cooldowen > 0) {
+            if (cooldowen == TimeUnit.SECONDS.toSeconds(1)) {
+                return "1 Sekunde"
+            } else {
+                return "$cooldowen Sekunden"
+            }
+        }
+        return "Bereit"
+    }
+
+    private fun getOnlinePlayers(): String {
         val size = Bukkit.getOnlinePlayers().size
         val maxPlayers = Bukkit.getMaxPlayers()
 
@@ -74,16 +80,7 @@ class ScoreboardManager(
         } else {
             "§a${size}"
         }
-        for (entry in this.list) {
-            entry.value.updateLine(11, "§8»§a ${onlinePlayers}§7/${maxPlayers}")
-        }
-    }
-
-    fun updateBlockCount(uuid: UUID) {
-        val player = this.place.placePlayerCach.getPlayer(uuid)
-        if (player != null) {
-            this.list[uuid]?.updateLine(8, "§8»§a ${player.getBlockCount()}")
-        }
+        return onlinePlayers
     }
 
     fun removePlayer(player: Player) {

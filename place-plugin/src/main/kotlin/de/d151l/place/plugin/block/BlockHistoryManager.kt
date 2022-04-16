@@ -20,6 +20,7 @@ class BlockHistoryManager(
 
         if (!this.place.databaseManager.database.isBlockHistory(block)) {
             this.place.databaseManager.database.addBlockHistory(block)
+            this.place.blockHistoryCount++
         } else
             this.place.databaseManager.database.updateBlockHistory(block)
     }

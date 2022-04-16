@@ -40,7 +40,7 @@ class PlaceWorldManager(
 
     fun setWorldBorder() {
         world.worldBorder.center = world.spawnLocation.set(0.5, 101.0, 0.5)
-        world.worldBorder.size = this.place.placeSize
+        world.worldBorder.size = this.place.config.worldBorderSize
         world.worldBorder.warningDistance = 0
     }
 }

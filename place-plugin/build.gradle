@@ -2,12 +2,19 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.0'
 }
 
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
 dependencies {
     compileOnly(files("../libs/paper.jar"))
     implementation(project(":place-api"))
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
 
     implementation 'fr.mrmicky:fastboard:1.2.1'
+
+    implementation 'com.github.slighterr12:SimpleJSONConfig:1.2'
+    compileOnly 'com.github.slighterr12:SimpleJSONConfig:1.2'
 }
 
 test {

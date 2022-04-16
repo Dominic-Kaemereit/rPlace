@@ -11,6 +11,8 @@ allprojects {
         mavenCentral()
 
         maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+
+        maven { url 'https://jitpack.io' }
     }
 
 }
@@ -35,7 +37,6 @@ subprojects {
         compileOnly 'org.json:json:20160810'
         compileOnly 'com.google.code.gson:gson:2.8.5'
         compileOnly 'org.mongodb:bson:3.8.1'
-
     }
 
     compileKotlin {

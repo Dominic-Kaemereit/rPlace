@@ -1,7 +1,10 @@
 package de.d151l.place.plugin
 
+import com.twodevsstudio.simplejsonconfig.SimpleJSONConfig
+import com.twodevsstudio.simplejsonconfig.api.Config
 import de.d151l.place.api.database.DatabaseType
 import de.d151l.place.plugin.block.BlockHistoryManager
+import de.d151l.place.plugin.config.PluginConfig
 import de.d151l.place.plugin.countdown.CountdownManager
 import de.d151l.place.plugin.database.DatabaseManager
 import de.d151l.place.plugin.listener.BlockListener
@@ -10,7 +13,7 @@ import de.d151l.place.plugin.listener.PlayerQuitListener
 import de.d151l.place.plugin.listener.ProtectionListener
 import de.d151l.place.plugin.player.PlacePlayerCach
 import de.d151l.place.plugin.scorebord.ScoreboardManager
-import de.d151l.place.plugin.task.CooldownTask
+import de.d151l.place.plugin.countdown.CooldownTask
 import de.d151l.place.plugin.world.PlaceWorldManager
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
@@ -25,21 +28,31 @@ class Place(
     val javaPlugin: JavaPlugin
 ) {
 
-    val placeWorldManager: PlaceWorldManager = PlaceWorldManager(this)
-    val scoreboardManager: ScoreboardManager = ScoreboardManager(this)
-    val countdownManager: CountdownManager = CountdownManager(this)
-    val databaseManager: DatabaseManager = DatabaseManager(DatabaseType.MONGODB)
-    val placePlayerCach: PlacePlayerCach = PlacePlayerCach(this)
-    val blockHistoryManager: BlockHistoryManager = BlockHistoryManager(this)
+    val config: PluginConfig
+
+    val placeWorldManager: PlaceWorldManager
+    val scoreboardManager: ScoreboardManager
+    val countdownManager: CountdownManager
+    val databaseManager: DatabaseManager
+    val placePlayerCach: PlacePlayerCach
+    val blockHistoryManager: BlockHistoryManager
 
     val cooldownTask: CooldownTask = CooldownTask(this)
     val cooledowns: MutableMap<UUID, Long> = mutableMapOf()
 
-    val placeSize = 31.0
-    val blockHistoryCount: Int
+    var blockHistoryCount: Int
 
     init {
         instance = this
+        SimpleJSONConfig.INSTANCE.register(this.javaPlugin, this.javaPlugin.dataFolder)
+        this.config = Config.getConfig(PluginConfig::class.java)
+
+        this.placeWorldManager = PlaceWorldManager(this)
+        this.scoreboardManager = ScoreboardManager(this)
+        this.countdownManager = CountdownManager(this)
+        this.databaseManager = DatabaseManager(this, DatabaseType.valueOf(this.config.databaseType))
+        this.placePlayerCach = PlacePlayerCach(this)
+        this.blockHistoryManager = BlockHistoryManager(this)
 
         val pluginManager = Bukkit.getPluginManager()
         pluginManager.registerEvents(PlayerJoinListener(this), this.javaPlugin)
@@ -62,13 +75,5 @@ class Place(
 
     companion object {
         lateinit var instance: Place
-    }
-
-    fun roundNumber(valueOne: Int, valueTow: Double): Double {
-        var valueThree = valueOne.toDouble() / valueTow.toDouble()
-        valueThree -= valueThree % 0.01
-        valueThree *= 100.0
-        valueThree = valueThree.toInt() / 100.0
-        return valueThree
     }
 }
