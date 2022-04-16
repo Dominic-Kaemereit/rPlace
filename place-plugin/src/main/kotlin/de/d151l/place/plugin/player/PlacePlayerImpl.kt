@@ -24,6 +24,10 @@ class PlacePlayerImpl(
         return this.blocks
     }
 
+    override fun setBlockToCount(count: Int) {
+        this.blocks = count
+    }
+
     override fun addBlockToCount() {
         this.blocks++
     }

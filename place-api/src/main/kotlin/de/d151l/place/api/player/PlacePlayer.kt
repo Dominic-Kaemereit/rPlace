@@ -13,6 +13,8 @@ interface PlacePlayer {
 
     fun getBlockCount(): Int
 
+    fun setBlockToCount(count: Int)
+
     fun addBlockToCount()
 
     fun getLastBlockRePlace(): Long
