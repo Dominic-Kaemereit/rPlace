@@ -30,4 +30,6 @@ interface DatabaseSupport {
     fun getBlockHistory(blockHistory: BlockHistory): BlockHistory
 
     fun updateBlockHistory(blockHistory: BlockHistory)
+
+    fun getBlockHistoryCount(): Int
 }

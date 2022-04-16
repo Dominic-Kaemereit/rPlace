@@ -22,12 +22,15 @@ class ScoreboardManager(
         val bord = FastBoard(player)
         val placePlayer = this.place.placePlayerCach.getPlayer(player.uniqueId)
 
+        val placeSize = this.place.placeSize
+        val max: Double = placeSize*placeSize
+
         bord.updateTitle("§lDEINSERVER.NET")
         if (placePlayer != null) {
             bord.updateLines(
                 "",
                 "§7Fortschritt",
-                "§8»§a 99.63%",
+                "§8»§a ${this.place.roundNumber(this.place.blockHistoryCount, max)}%",
                 "",
                 "§7Countdown",
                 "§8»§a Bereit",

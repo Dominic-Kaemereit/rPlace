@@ -77,4 +77,8 @@ class MongoDB: DatabaseSupport {
         val document = this.gson.fromJson(this.gson.toJson(blockHistory as BlockHistoryImpl), Document::class.java)
         this.blockCollection.replaceOne(Filters.eq("location", blockHistory.getLocation()), document)
     }
+
+    override fun getBlockHistoryCount(): Int {
+        return this.blockCollection.find().count()
+    }
 }

@@ -19,10 +19,10 @@ class PlaceWorldManager(
     lateinit var world: World
 
     init {
-        loadWorld(31.0)
+        loadWorld()
     }
 
-    private fun loadWorld(size: Double) {
+    private fun loadWorld() {
         val worldCreator: WorldCreator = WorldCreator("place")
         worldCreator.generator(PlaceChunkGenerator())
         val world = Bukkit.createWorld(worldCreator)
@@ -33,12 +33,14 @@ class PlaceWorldManager(
             world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false)
 
             world.spawnLocation = world.spawnLocation.set(0.5, 101.0, 0.5)
-
-            world.worldBorder.center = world.spawnLocation.set(0.5, 101.0, 0.5)
-            world.worldBorder.size = size
-            world.worldBorder.warningDistance = 0
         }
 
         this.world = world!!
+    }
+
+    fun setWorldBorder() {
+        world.worldBorder.center = world.spawnLocation.set(0.5, 101.0, 0.5)
+        world.worldBorder.size = this.place.placeSize
+        world.worldBorder.warningDistance = 0
     }
 }

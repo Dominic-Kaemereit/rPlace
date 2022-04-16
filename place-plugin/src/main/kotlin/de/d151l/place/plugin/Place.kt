@@ -35,6 +35,9 @@ class Place(
     val cooldownTask: CooldownTask = CooldownTask(this)
     val cooledowns: MutableMap<UUID, Long> = mutableMapOf()
 
+    val placeSize = 15.0
+    val blockHistoryCount: Int
+
     init {
         instance = this
 
@@ -44,13 +47,25 @@ class Place(
         pluginManager.registerEvents(BlockListener(this), this.javaPlugin)
         pluginManager.registerEvents(ProtectionListener(this), this.javaPlugin)
 
+        this.placeWorldManager.setWorldBorder()
+        this.blockHistoryCount = this.databaseManager.database.getBlockHistoryCount()
     }
 
     fun shutdown() {
+        Bukkit.getOnlinePlayers().forEach { it.kick(null) }
 
+        this.databaseManager.database.closeConnection()
     }
 
     companion object {
         lateinit var instance: Place
+    }
+
+    fun roundNumber(valueOne: Int, valueTow: Double): Double {
+        var valueThree = valueOne.toDouble() / valueTow.toDouble()
+        valueThree -= valueThree % 0.01
+        valueThree *= 100.0
+        valueThree = valueThree.toInt() / 100.0
+        return valueThree
     }
 }
