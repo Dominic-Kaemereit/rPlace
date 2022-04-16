@@ -20,6 +20,7 @@ class MessageConfig: Config() {
     val blockWahteSecond = "%prefix%Du musst noch §c1 §7Sekunde warten!"
     val blockHasNoHistory = "%prefix%Dieser Block hat keine änderung!"
     val blockInformation = "%prefix%Dieser Block ist von §a%name% §7gestetzt worden. §8(§a%date%§8)"
+    val blockRemoveSuccessfully = "%prefix%Du hast diesen Block enfernt!"
 
     @Comment("This is for the scoreboard and not for player messages.")
     val seconds = "Sekunden"

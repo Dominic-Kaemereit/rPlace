@@ -1,6 +1,7 @@
 package de.d151l.place.plugin.command
 
 import de.d151l.place.plugin.Place
+import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -31,6 +32,10 @@ class RemoveBlockCommand(
             return false
         }
 
+        val blockHistory = this.place.blockHistoryManager.getBlockHistory(targetBlock)
+        this.place.databaseManager.database.deleteBlockHistory(blockHistory)
+        targetBlock.type = Material.BEDROCK
+        player.sendMessage(place.messagesConfig.blockRemoveSuccessfully.replace("%prefix%", place.messagesConfig.prefix))
         return true
     }
 }
