@@ -31,6 +31,7 @@ class LocalStorage: DatabaseSupport {
                 statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS placePlayer(" +
                             "uuid VARCHAR NOT NULL," +
+                            "name VARCHAR NOT NULL," +
                             "blocks INTEGER NOT NULL," +
                             "lastBlockRePlace VARCHAR NOT NULL," +
                             "ranking INTEGER NOT NULL," +
@@ -74,7 +75,8 @@ class LocalStorage: DatabaseSupport {
         val resultSet: ResultSet = preparedStatement.executeQuery()
 
         val player: PlacePlayerImpl = PlacePlayerImpl(
-            resultSet.getString("uuid")
+            resultSet.getString("uuid"),
+            resultSet.getString("name")
         )
         player.setRanking(resultSet.getInt("ranking"))
         player.setLastBlockRePlace(resultSet.getString("lastBlockRePlace").toLong())
@@ -92,11 +94,12 @@ class LocalStorage: DatabaseSupport {
 
     override fun createPlayerInDatabase(placePlayer: PlacePlayer) {
         val preparedStatement: PreparedStatement = connection
-            .prepareStatement("INSERT INTO placePlayer(uuid, blocks, lastBlockRePlace, ranking) VALUES (?, ?, ?, ?)")
+            .prepareStatement("INSERT INTO placePlayer(uuid, namem blocks, lastBlockRePlace, ranking) VALUES (?, ?, ?, ?, ?)")
         preparedStatement.setString(1, placePlayer.getUUID().toString())
-        preparedStatement.setInt(2, placePlayer.getBlockCount())
-        preparedStatement.setLong(3, placePlayer.getLastBlockRePlace())
-        preparedStatement.setInt(4, placePlayer.getRanking())
+        preparedStatement.setString(2, placePlayer.getName())
+        preparedStatement.setInt(3, placePlayer.getBlockCount())
+        preparedStatement.setLong(4, placePlayer.getLastBlockRePlace())
+        preparedStatement.setInt(5, placePlayer.getRanking())
 
         preparedStatement.executeUpdate()
     }

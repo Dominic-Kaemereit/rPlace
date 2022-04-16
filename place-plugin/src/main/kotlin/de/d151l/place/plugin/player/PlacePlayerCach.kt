@@ -2,6 +2,7 @@ package de.d151l.place.plugin.player
 
 import de.d151l.place.api.player.PlacePlayer
 import de.d151l.place.plugin.Place
+import org.bukkit.entity.Player
 import java.util.UUID
 
 /**
@@ -15,18 +16,18 @@ class PlacePlayerCach(
 
     private val players: MutableMap<UUID, PlacePlayer> = mutableMapOf()
 
-    fun loadPlayer(uuid: UUID): PlacePlayer {
-        if (this.place.databaseManager.database.isPlayerRegistered(uuid)) {
-            val placePlayer = this.place.databaseManager.database.getPlacePlayer(uuid)
-            placePlayer.setRanking(this.place.databaseManager.database.getRanking(uuid))
-            this.players[uuid] = placePlayer
+    fun loadPlayer(player: Player): PlacePlayer {
+        if (this.place.databaseManager.database.isPlayerRegistered(player.uniqueId)) {
+            val placePlayer = this.place.databaseManager.database.getPlacePlayer(player.uniqueId)
+            placePlayer.setRanking(this.place.databaseManager.database.getRanking(player.uniqueId))
+            this.players[player.uniqueId] = placePlayer
             return placePlayer
         }
 
-        val placePlayer: PlacePlayer = PlacePlayerImpl(uuid.toString()) as PlacePlayer
+        val placePlayer: PlacePlayer = PlacePlayerImpl(player.uniqueId.toString(), player.name) as PlacePlayer
         this.place.databaseManager.database.createPlayerInDatabase(placePlayer)
-        placePlayer.setRanking(this.place.databaseManager.database.getRanking(uuid))
-        this.players[uuid] = placePlayer
+        placePlayer.setRanking(this.place.databaseManager.database.getRanking(player.uniqueId))
+        this.players[player.uniqueId] = placePlayer
         return placePlayer
     }
 

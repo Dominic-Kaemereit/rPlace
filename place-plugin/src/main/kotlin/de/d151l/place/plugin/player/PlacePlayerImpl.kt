@@ -9,7 +9,8 @@ import java.util.*
  * @author  D151l
  */
 class PlacePlayerImpl(
-    private val uuid: String
+    private val uuid: String,
+    private var name: String
 ): PlacePlayer {
 
     private var blocks: Int = 0
@@ -18,6 +19,10 @@ class PlacePlayerImpl(
 
     override fun getUUID(): UUID {
         return UUID.fromString(this.uuid)
+    }
+
+    override fun getName(): String {
+        return this.name
     }
 
     override fun getBlockCount(): Int {

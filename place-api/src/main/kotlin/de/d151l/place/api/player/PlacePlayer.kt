@@ -11,6 +11,8 @@ interface PlacePlayer {
 
     fun getUUID(): UUID
 
+    fun getName(): String
+
     fun getBlockCount(): Int
 
     fun setBlockToCount(count: Int)
