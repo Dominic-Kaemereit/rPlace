@@ -31,6 +31,7 @@ class PlaceWorldManager(
             world.setGameRule(GameRule.SPAWN_RADIUS, 0)
             world.setGameRule(GameRule.DO_WEATHER_CYCLE, false)
             world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false)
+            world.setGameRule(GameRule.RANDOM_TICK_SPEED, 0)
 
             world.spawnLocation = world.spawnLocation.set(0.5, 101.0, 0.5)
         }
