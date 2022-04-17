@@ -22,19 +22,19 @@ class PluginConfig: Config() {
     val scoreboardTitle = "§aServer §8| §7r/Place"
     val scoreboard: List<String> = mutableListOf(
         "§4§8§l§m---------------",
-        " §8§l» §7Fortschritt§3",
+        " §8§l» §7Progress§3",
         "    §8» §a %progress%%",
         "",
         " §8§l» §7Countdown§3",
         "   §8» §a %cooldown%",
         "",
-        " §8§l» §7Deine Blöcke§3",
+        " §8§l» §7Your blocks§3",
         "    §8» §a %blocks%",
         "",
-        " §8§l» §7Spieler§3",
+        " §8§l» §7Players§3",
         "    §8»§a %onlinePlayers%§7/%maxPlayers%",
         "",
-        " §8§l» §7Deine Platzierung§3",
+        " §8§l» §7Your ranking§3",
         "    §8»§a #%ranking%"
     )
 

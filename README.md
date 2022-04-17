@@ -6,4 +6,3 @@
 
 - [ ] Better README
 - [ ] make code betta
-- [ ] make all messages default to english 

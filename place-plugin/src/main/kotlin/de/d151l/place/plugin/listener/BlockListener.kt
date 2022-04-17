@@ -32,9 +32,9 @@ class BlockListener(
         if (cooldowen > 0) {
 
             if (cooldowen == TimeUnit.SECONDS.toSeconds(1)) {
-                player.sendMessage(place.messagesConfig.blockWahteSecond.replace("%prefix%", place.messagesConfig.prefix))
+                player.sendMessage(place.messagesConfig.blockWaiteSecond.replace("%prefix%", place.messagesConfig.prefix))
             } else {
-                player.sendMessage(place.messagesConfig.blockWahteSeconds.replace("%prefix%", place.messagesConfig.prefix)
+                player.sendMessage(place.messagesConfig.blockWaiteSeconds.replace("%prefix%", place.messagesConfig.prefix)
                     .replace("%cooldowen%", cooldowen.toString()))
 
             }
