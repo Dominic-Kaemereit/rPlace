@@ -10,7 +10,7 @@ import com.mongodb.client.model.Sorts
 import de.d151l.place.api.block.BlockHistory
 import de.d151l.place.api.database.DatabaseSupport
 import de.d151l.place.api.player.PlacePlayer
-import de.d151l.place.plugin.block.BlockHistoryImpl
+import de.d151l.place.plugin.world.block.BlockHistoryImpl
 import de.d151l.place.plugin.player.PlacePlayerImpl
 import org.bson.Document
 import java.util.*
@@ -29,7 +29,7 @@ class MongoDB: DatabaseSupport {
     private val gson: Gson = Gson()
 
     override fun connect(host: String, port: Int, user: String, password: String, database: String) {
-        this.client = MongoClients.create("mongodb://" + user + ":" + password + "@" + host + ":" + port);
+        this.client = MongoClients.create("mongodb://$user:$password@$host:$port");
         this.playerCollection = this.client.getDatabase(database).getCollection("placePlayer")
         this.blockCollection = this.client.getDatabase(database).getCollection("placeBlockHistory")
     }
@@ -46,12 +46,12 @@ class MongoDB: DatabaseSupport {
 
     override fun getPlacePlayer(uuid: UUID): PlacePlayer {
         val toString = uuid.toString()
-        val document: Document = this.playerCollection.find(Filters.eq("uuid", toString)).first()
+        val document: Document = this.playerCollection.find(Filters.eq("uuid", toString)).first() as Document
         return gson.fromJson(document.toJson(), PlacePlayerImpl::class.java)
     }
 
     override fun getPlacePlayerByName(name: String): PlacePlayer {
-        val document: Document = this.playerCollection.find(Filters.eq("name", name)).first()
+        val document: Document = this.playerCollection.find(Filters.eq("name", name)).first() as Document
         return gson.fromJson(document.toJson(), PlacePlayerImpl::class.java)
     }
 

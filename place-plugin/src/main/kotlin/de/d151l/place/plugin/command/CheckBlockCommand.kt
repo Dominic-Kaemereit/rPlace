@@ -1,7 +1,7 @@
 package de.d151l.place.plugin.command
 
 import de.d151l.place.plugin.Place
-import de.d151l.place.plugin.uuid.UUIDFetcher
+import de.d151l.place.plugin.util.UUIDFetcher
 import org.bukkit.Sound
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -40,7 +40,6 @@ class CheckBlockCommand(
             .replace("%name%", UUIDFetcher.getNameByUuid(blockHistory.getPlayer())!!)
             .replace("%date%", SimpleDateFormat("HH:mm dd.MM.yyyy").format(Date(blockHistory.getTime())))
         )
-
         return true
     }
 }

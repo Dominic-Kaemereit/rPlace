@@ -3,7 +3,7 @@ package de.d151l.place.plugin.database.mysql
 import de.d151l.place.api.block.BlockHistory
 import de.d151l.place.api.database.DatabaseSupport
 import de.d151l.place.api.player.PlacePlayer
-import de.d151l.place.plugin.block.BlockHistoryImpl
+import de.d151l.place.plugin.world.block.BlockHistoryImpl
 import de.d151l.place.plugin.player.PlacePlayerImpl
 import java.sql.*
 import java.util.*

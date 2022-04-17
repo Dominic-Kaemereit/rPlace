@@ -1,4 +1,4 @@
-package de.d151l.place.plugin.block
+package de.d151l.place.plugin.world.block
 
 import de.d151l.place.api.block.BlockHistory
 import java.util.*

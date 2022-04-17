@@ -1,7 +1,7 @@
 package de.d151l.place.plugin.world
 
 import de.d151l.place.plugin.Place
-import de.d151l.place.plugin.chunk.PlaceChunkGenerator
+import de.d151l.place.plugin.world.chunk.PlaceChunkGenerator
 import org.bukkit.Bukkit
 import org.bukkit.GameRule
 import org.bukkit.World

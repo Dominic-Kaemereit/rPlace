@@ -1,13 +1,12 @@
 package de.d151l.place.plugin.listener
 
 import de.d151l.place.plugin.Place
-import de.d151l.place.plugin.block.BlockChecker
+import de.d151l.place.plugin.world.block.BlockChecker
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
-import org.bukkit.event.inventory.InventoryInteractEvent
 import org.bukkit.event.player.PlayerDropItemEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
@@ -95,7 +94,7 @@ class ItemListener(
         val itemDrop = event.itemDrop
         event.isCancelled = true
 
-        if (!(itemDrop.itemStack.itemMeta == null))
+        if (itemDrop.itemStack.itemMeta != null)
             if (checkIfItem(itemDrop.itemStack))
                     return
 

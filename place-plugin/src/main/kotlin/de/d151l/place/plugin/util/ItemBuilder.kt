@@ -24,12 +24,12 @@ class ItemBuilder {
 
     constructor(material: Material) {
         itemStack = ItemStack(material)
-        itemMeta = itemStack.getItemMeta()
+        itemMeta = itemStack.itemMeta
     }
 
     constructor(itemStack: ItemStack) {
         this.itemStack = itemStack
-        itemMeta = this.itemStack.getItemMeta()
+        itemMeta = this.itemStack.itemMeta
     }
 
     fun setDisplayName(name: Component?): ItemBuilder {

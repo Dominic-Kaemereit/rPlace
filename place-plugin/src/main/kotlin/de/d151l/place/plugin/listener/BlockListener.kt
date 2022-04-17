@@ -1,7 +1,7 @@
 package de.d151l.place.plugin.listener
 
 import de.d151l.place.plugin.Place
-import de.d151l.place.plugin.block.BlockChecker
+import de.d151l.place.plugin.world.block.BlockChecker
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent

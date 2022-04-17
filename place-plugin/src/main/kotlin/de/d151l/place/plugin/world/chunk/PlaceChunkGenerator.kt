@@ -1,4 +1,4 @@
-package de.d151l.place.plugin.chunk
+package de.d151l.place.plugin.world.chunk
 
 import org.bukkit.Material
 import org.bukkit.World
@@ -15,10 +15,10 @@ class PlaceChunkGenerator: ChunkGenerator() {
     override fun generateChunkData(world: World, random: Random, x: Int, z: Int, biome: BiomeGrid): ChunkData {
         val chunk: ChunkData = createChunkData(world)
 
-        for (x in 0..15) {
-            for (z in 0..15) {
-                chunk.setBlock(x, 100, z, Material.BEDROCK)
-                chunk.setBlock(x, 99, z, Material.BEDROCK)
+        for (locationX in 0..15) {
+            for (locationZ in 0..15) {
+                chunk.setBlock(locationX, 100, locationZ, Material.BEDROCK)
+                chunk.setBlock(locationX, 99, locationZ, Material.BEDROCK)
             }
         }
         return chunk

@@ -4,9 +4,8 @@ import de.d151l.place.api.block.BlockHistory
 import de.d151l.place.api.database.DatabaseSupport
 import de.d151l.place.api.player.PlacePlayer
 import de.d151l.place.plugin.Place
-import de.d151l.place.plugin.block.BlockHistoryImpl
 import de.d151l.place.plugin.player.PlacePlayerImpl
-import org.bson.Document
+import de.d151l.place.plugin.world.block.BlockHistoryImpl
 import java.io.File
 import java.sql.*
 import java.util.*

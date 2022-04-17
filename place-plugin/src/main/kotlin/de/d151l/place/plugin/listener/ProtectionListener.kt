@@ -1,6 +1,5 @@
 package de.d151l.place.plugin.listener
 
-import de.d151l.place.plugin.Place
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockExplodeEvent
@@ -15,9 +14,7 @@ import org.bukkit.event.player.PlayerArmorStandManipulateEvent
  * @project R-Place
  * @author  D151l
  */
-class ProtectionListener(
-    private val place: Place
-): Listener {
+class ProtectionListener : Listener {
 
     @EventHandler
     fun onArmorStand(event: PlayerArmorStandManipulateEvent) {

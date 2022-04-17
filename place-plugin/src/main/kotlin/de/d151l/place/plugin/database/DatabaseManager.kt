@@ -20,12 +20,16 @@ class DatabaseManager(
     var database: DatabaseSupport
 
     init {
-        if (this.databaseType == DatabaseType.MONGODB) {
-            this.database = MongoDB()
-        } else if (this.databaseType == DatabaseType.MYSQL) {
-            this.database = MySQL()
-        } else {
-            this.database = LocalStorage()
+        when (this.databaseType) {
+            DatabaseType.LOCALSTORAGE -> {
+                this.database = LocalStorage()
+            }
+            DatabaseType.MONGODB -> {
+                this.database = MongoDB()
+            }
+            DatabaseType.MYSQL -> {
+                this.database = MySQL()
+            }
         }
 
         val databaseConfig = this.place.databaseConfig

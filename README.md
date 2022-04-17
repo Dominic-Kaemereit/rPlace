@@ -5,4 +5,3 @@
 </div>
 
 - [ ] Better README
-- [ ] make code betta

@@ -1,4 +1,4 @@
-package de.d151l.place.plugin.uuid
+package de.d151l.place.plugin.util
 
 import de.d151l.place.plugin.Place
 import java.util.UUID
@@ -10,17 +10,13 @@ import java.util.UUID
  */
 object UUIDFetcher {
 
-    fun getUuidByName(name: String): UUID? {
+    fun getUuidByName(name: String): UUID {
         val placePlayerByName = Place.instance.databaseManager.database.getPlacePlayerByName(name)
-        if (placePlayerByName == null)
-            return null
         return placePlayerByName.getUUID()
     }
 
-    fun getNameByUuid(uuid: UUID): String? {
+    fun getNameByUuid(uuid: UUID): String {
         val placePlayerByName = Place.instance.databaseManager.database.getPlacePlayer(uuid)
-        if (placePlayerByName == null)
-            return null
         return placePlayerByName.getName()
     }
 }

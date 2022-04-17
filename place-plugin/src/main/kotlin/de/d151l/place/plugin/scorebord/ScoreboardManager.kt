@@ -6,6 +6,7 @@ import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.math.roundToInt
 
 /**
  * @created 15/04/2022 - 18:52
@@ -31,7 +32,8 @@ class ScoreboardManager(
         val boarderSize = this.place.config.worldBorderSize
         val max: Double = boarderSize*boarderSize
 
-        val progress = (Math.round((this.place.blockHistoryCount / max * 100)*100.0) / 100.0).toString()
+        //        val progress = (Math.round((this.place.blockHistoryCount / max * 100)*100.0) / 100.0).toString()
+        val progress = (((this.place.blockHistoryCount / max * 100) * 100.0).roundToInt() / 100.0).toString()
         val onlinePlayers = getOnlinePlayers()
         val maxPlayers = Bukkit.getMaxPlayers().toString()
 

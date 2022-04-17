@@ -19,7 +19,7 @@ class PlayerQuitListener(
         val player = event.player
         val placePlayer = this.place.placePlayerCach.getPlayer(player.uniqueId)
         if (placePlayer != null) {
-            this.place.cooledowns.get(placePlayer.getUUID())?.let { placePlayer.setLastBlockRePlace(it) }
+            this.place.cooledowns[placePlayer.getUUID()]?.let { placePlayer.setLastBlockRePlace(it) }
             this.place.placePlayerCach.savePlayer(placePlayer)
         }
         this.place.placePlayerCach.unloadPlayer(player.uniqueId)

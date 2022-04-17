@@ -4,7 +4,7 @@ import com.twodevsstudio.simplejsonconfig.SimpleJSONConfig
 import com.twodevsstudio.simplejsonconfig.api.Config
 import de.d151l.place.plugin.util.Metrics
 import de.d151l.place.api.database.DatabaseType
-import de.d151l.place.plugin.block.BlockHistoryManager
+import de.d151l.place.plugin.world.block.BlockHistoryManager
 import de.d151l.place.plugin.command.CheckBlockCommand
 import de.d151l.place.plugin.command.RemoveBlockCommand
 import de.d151l.place.plugin.config.BlockingItemsConfig
@@ -43,7 +43,6 @@ class Place(
     val placePlayerCach: PlacePlayerCach
     val blockHistoryManager: BlockHistoryManager
 
-    val cooldownTask: CooldownTask = CooldownTask(this)
     val cooledowns: MutableMap<UUID, Long> = mutableMapOf()
 
     var blockHistoryCount: Int
@@ -69,7 +68,7 @@ class Place(
         pluginManager.registerEvents(PlayerJoinListener(this), this.javaPlugin)
         pluginManager.registerEvents(PlayerQuitListener(this), this.javaPlugin)
         pluginManager.registerEvents(BlockListener(this), this.javaPlugin)
-        pluginManager.registerEvents(ProtectionListener(this), this.javaPlugin)
+        pluginManager.registerEvents(ProtectionListener(), this.javaPlugin)
         pluginManager.registerEvents(ItemListener(this), this.javaPlugin)
 
         this.javaPlugin.getCommand("removeBlock")?.setExecutor(RemoveBlockCommand(this))
@@ -78,8 +77,8 @@ class Place(
         this.placeWorldManager.setWorldBorder()
         this.blockHistoryCount = this.databaseManager.database.getBlockHistoryCount()
 
-        val metrics: Metrics =
-            Metrics(this.javaPlugin, 14956)
+        CooldownTask(this)
+        Metrics(this.javaPlugin, 14956)
     }
 
     fun shutdown() {
