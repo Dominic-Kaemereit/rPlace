@@ -14,6 +14,13 @@ class BlockingItemsConfig: Config() {
 
     val blockingItems: List<String> = mutableListOf(
         Material.BEDROCK.name,
-        "test"
+        Material.CONDUIT.name,
+        Material.TURTLE_EGG.name,
+        Material.BAMBOO.name
+    )
+
+    val blockingItemKeys: List<String> = mutableListOf(
+        "TRAPDOOR",
+        "PRESSURE_PLATE"
     )
 }

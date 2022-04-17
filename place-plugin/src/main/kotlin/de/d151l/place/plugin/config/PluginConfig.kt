@@ -19,23 +19,23 @@ class PluginConfig: Config() {
     @Comment("The worldBorderSize must be an odd number. (1, 7, 15, 31, 101, 1001...)")
     val worldBorderSize = 313.0
 
-    val scoreboardTitle = "§lDEINSERVER.NET"
+    val scoreboardTitle = "§aServer §8| §7r/Place"
     val scoreboard: List<String> = mutableListOf(
+        "§4§8§l§m---------------",
+        " §8§l» §7Fortschritt§3",
+        "    §8» §a %progress%%",
         "",
-        "§7Fortschritt",
-        "§8»§a %progress%%",
+        " §8§l» §7Countdown§3",
+        "   §8» §a %cooldown%",
         "",
-        "§7Countdown",
-        "§8»§a %cooldown%",
+        " §8§l» §7Deine Blöcke§3",
+        "    §8» §a %blocks%",
         "",
-        "§7Deine Blöcke",
-        "§8»§a %blocks%",
+        " §8§l» §7Spieler§3",
+        "    §8»§a %onlinePlayers%§7/%maxPlayers%",
         "",
-        "§7Spieler",
-        "§8»§a %onlinePlayers%§7/%maxPlayers%",
-        "",
-        "§7Deine Platzierung",
-        "§8»§a #%ranking%"
+        " §8§l» §7Deine Platzierung§3",
+        "    §8»§a #%ranking%"
     )
 
     @Comment("List of sounds: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html")

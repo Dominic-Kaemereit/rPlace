@@ -14,20 +14,34 @@ object BlockChecker {
 
     fun check(place: Place, player: Player, material: Material): Boolean {
 
+        if (place.blockingItems.blockingItems.contains(material.name.uppercase())) {
+            player.sendMessage(place.messagesConfig.blockPlaceNotAllow.replace("%prefix%", place.messagesConfig.prefix))
+            return false
+        }
+
+        if (place.blockingItems.blockingItemKeys.any { material.name.contains(it.uppercase()) }) {
+            player.sendMessage(place.messagesConfig.blockPlaceNotAllow.replace("%prefix%", place.messagesConfig.prefix))
+            return false
+        }
+
         if (!material.isBlock) {
             player.sendMessage(place.messagesConfig.blockPlaceNotAllow.replace("%prefix%", place.messagesConfig.prefix))
             return false
         }
-
-        if (place.blockingItems.blockingItems.contains(material.name)) {
-            player.sendMessage(place.messagesConfig.blockPlaceNotAllow.replace("%prefix%", place.messagesConfig.prefix))
-            return false
-        }
-
         return true
     }
     fun check(place: Place, player: Player, block: Block, material: Material): Boolean {
         if (material.isAir) {
+            return false
+        }
+
+        if (place.blockingItems.blockingItems.contains(material.name.uppercase())) {
+            player.sendMessage(place.messagesConfig.blockPlaceNotAllow.replace("%prefix%", place.messagesConfig.prefix))
+            return false
+        }
+
+        if (place.blockingItems.blockingItemKeys.any { material.name.contains(it.uppercase()) }) {
+            player.sendMessage(place.messagesConfig.blockPlaceNotAllow.replace("%prefix%", place.messagesConfig.prefix))
             return false
         }
 
@@ -45,12 +59,6 @@ object BlockChecker {
             player.sendMessage(place.messagesConfig.blockAlreadyPlaced.replace("%prefix%", place.messagesConfig.prefix))
             return false
         }
-
-        if (place.blockingItems.blockingItems.contains(material.name)) {
-            player.sendMessage(place.messagesConfig.blockPlaceNotAllow.replace("%prefix%", place.messagesConfig.prefix))
-            return false
-        }
-
         return true
     }
 }

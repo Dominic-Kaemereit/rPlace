@@ -12,7 +12,7 @@ import com.twodevsstudio.simplejsonconfig.interfaces.Configuration
 @Configuration("messages")
 class MessageConfig: Config() {
 
-    val prefix = "§8〣§arPlace §8» §7"
+    val prefix = "§8〣§ar/Place §8» §7"
 
     val blockPlaceNotAllow = "%prefix%Diesen Block darftst du §cnicht§7 platzieren!"
     val blockAlreadyPlaced = "%prefix%Dieser Block wurde hier schon platziert!"
