@@ -2,7 +2,7 @@
   <img src="./img/rplace_title.png">
 </p>
 <h2 align="center">r/Place</h2>
-<h4 align="center">A funny game for your server/networck</h4>
+<h4 align="center">A funny game for your server/network</h4>
 
 <br>
 <hr>
@@ -110,7 +110,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
   <img src="./img/rplace_permissions.png">
 </p>
 
-| Permissiom                 | Features                                       |
+| Permissions                | Features                                       |
 | -------------------------- |:----------------------------------------------:|
 | place.item.remover         | Add a block remover to the inventory.          |
 | place.item.checker         | Add a block remover in the inventory.          |
