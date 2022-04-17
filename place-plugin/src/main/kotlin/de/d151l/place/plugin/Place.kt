@@ -8,6 +8,7 @@ import de.d151l.place.plugin.block.BlockHistoryManager
 import de.d151l.place.plugin.command.CheckBlockCommand
 import de.d151l.place.plugin.command.RemoveBlockCommand
 import de.d151l.place.plugin.config.BlockingItemsConfig
+import de.d151l.place.plugin.config.DatabaseConfig
 import de.d151l.place.plugin.config.MessageConfig
 import de.d151l.place.plugin.config.PluginConfig
 import de.d151l.place.plugin.countdown.CountdownManager
@@ -33,6 +34,7 @@ class Place(
     val config: PluginConfig
     val blockingItems: BlockingItemsConfig
     val messagesConfig: MessageConfig
+    val databaseConfig: DatabaseConfig
 
     val placeWorldManager: PlaceWorldManager
     val scoreboardManager: ScoreboardManager
@@ -52,8 +54,10 @@ class Place(
         this.config = Config.getConfig(PluginConfig::class.java)
         this.blockingItems = Config.getConfig(BlockingItemsConfig::class.java)
         this.messagesConfig = Config.getConfig(MessageConfig::class.java)
+        this.databaseConfig = Config.getConfig(DatabaseConfig::class.java)
 
-        this.databaseManager = DatabaseManager(this, DatabaseType.valueOf(this.config.databaseType))
+
+        this.databaseManager = DatabaseManager(this, DatabaseType.valueOf(this.databaseConfig.databaseType))
 
         this.placeWorldManager = PlaceWorldManager(this)
         this.scoreboardManager = ScoreboardManager(this)

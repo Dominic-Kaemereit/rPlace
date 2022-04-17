@@ -6,6 +6,6 @@
 
 - [ ] Better README
 - [ ] FARMLAND is
-- [ ] make database in onw config
+- [x] make database in onw config
 - [ ] make code betta
 - [ ] make all messages default to english 

@@ -28,7 +28,13 @@ class DatabaseManager(
             this.database = LocalStorage()
         }
 
-        val config = this.place.config
-        this.database.connect(config.host, config.port, config.user, config.password, config.databaseName)
+        val databaseConfig = this.place.databaseConfig
+        this.database.connect(
+            databaseConfig.host,
+            databaseConfig.port,
+            databaseConfig.user,
+            databaseConfig.password,
+            databaseConfig.databaseName
+        )
     }
 }

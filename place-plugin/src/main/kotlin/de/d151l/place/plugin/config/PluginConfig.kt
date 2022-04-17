@@ -44,12 +44,4 @@ class PluginConfig: Config() {
     @Comment("List of materials: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html")
     val itemRemoverMaterial = "STICK"
     val itemCheckerMaterial = "END_ROD"
-
-    @Comment("LOCALSTORAGE, MYSQL and MONGODB are the database types currently available.")
-    val databaseType = DatabaseType.LOCALSTORAGE.name
-    val host = "127.0.0.1"
-    val port = 1234
-    val user = "root"
-    val password = "password123"
-    val databaseName = "place"
 }
