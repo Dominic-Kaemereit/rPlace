@@ -99,7 +99,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 - Scoreboard full configurable
 - All messages full configurable
 - 1.13 - 1.18.2 Server support
-- Database support (SQL Light, MySQL, MongoDB)
+- Database support (SQLite, MySQL, MongoDB)
   </div>
 <br>
 <hr>
