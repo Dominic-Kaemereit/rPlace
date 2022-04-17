@@ -27,13 +27,13 @@
 - Scoreboard full configurable
 - All messages full configurable
 - 1.13 - 1.18.2 Server support
-- Database support (SQL Light, MySQL, , MongoDB)
+- Database support (SQL Light, MySQL, MongoDB)
   </div>
 <br>
 <hr>
 <br>
 
-  <div align="right">
+  <div align="center">
     <p align="center">
   <img src="./img/rplace_permissions.png">
 </p>
