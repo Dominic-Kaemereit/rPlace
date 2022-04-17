@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./img/dominic_rplace_place.png">
+  <img src="./img/rplace.jpg">
 </p>
 <h2 align="center">r/PLace</h2>
 <h4 align="center">A funy game for your server/networck</h2>
