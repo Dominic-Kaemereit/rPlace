@@ -5,4 +5,7 @@
 </div>
 
 - [ ] Better README
-- [ ] FARMLAND is 
+- [ ] FARMLAND is
+- [ ] make database in onw config
+- [ ] make code betta
+- [ ] make all messages default to english 
