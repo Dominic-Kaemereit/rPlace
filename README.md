@@ -27,12 +27,17 @@
 <br>
 <hr>
 <br>
-<p align="center">
+
+  <div align="right">
+    <p align="center">
   <img src="./img/rplace_permissions.png">
 </p>
-  <div align="right">
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+
+| Permissiom                 | Features                                       |
+| -------------------------- |:----------------------------------------------:|
+| place.item.remover         | Add a block remover to the inventory.          |
+| place.item.checker         | Add a block remover in the inventory.          |
+| place.command.remove.block | Permission to execute the /removeBlock command |
+| place.command.check.block  | Permission to execute the /checkBlock command  |
+  
   </div>
