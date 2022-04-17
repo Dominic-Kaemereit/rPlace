@@ -19,10 +19,15 @@
   </div>
    <br>
   <div align="left">
-    <h1>test</h1>
-    <p>
-  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
-  </p>
+        <p align="center">
+  <img src="./img/rplace_features.png">
+</p>
+
+- Geyser compatibility
+- Scoreboard full configurable
+- All messages full configurable
+- 1.13 - 1.18.2 Server support
+- Database support (SQL Light, MySQL, , MongoDB)
   </div>
 <br>
 <hr>
