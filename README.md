@@ -1,8 +1,8 @@
 <p align="center">
   <img src="./img/rplace_title.png">
 </p>
-<h2 align="center">r/PLace</h2>
-<h4 align="center">A funy game for your server/networck</h2>
+<h2 align="center">r/Place</h2>
+<h4 align="center">A funny game for your server/networck</h2>
 
 <br>
 <h3 align="center"><strong>test</strong></h3>
