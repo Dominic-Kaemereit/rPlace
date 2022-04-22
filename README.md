@@ -8,6 +8,34 @@
 <hr>
 <br>
 
+ <div align="right">
+        <p align="center">
+  <img src="./img/rplace_description.png">
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+  </p>
+  </div>
+<br>
+<hr>
+<br>
+   
+   
+  <div align="left">
+        <p align="center">
+  <img src="./img/rplace_features.png">
+</p>
+
+- Geyser compatibility
+- Scoreboard full configurable
+- All messages full configurable
+- 1.13 - 1.18.2 Server support
+- Database support (SQLite, MySQL, MongoDB)
+  </div>
+
+<br>
+<hr>
+<br>
+
  <div align="left">
         <p align="center">
   <img src="./img/rplace_config.png">
@@ -73,33 +101,6 @@
   ```
   
 </details>
-  </div>
-<br>
-<hr>
-<br>
-
- <div align="right">
-        <p align="center">
-  <img src="./img/rplace_description.png">
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
-  </p>
-  </div>
-<br>
-<hr>
-<br>
-   
-   
-  <div align="left">
-        <p align="center">
-  <img src="./img/rplace_features.png">
-</p>
-
-- Geyser compatibility
-- Scoreboard full configurable
-- All messages full configurable
-- 1.13 - 1.18.2 Server support
-- Database support (SQLite, MySQL, MongoDB)
   </div>
 <br>
 <hr>
