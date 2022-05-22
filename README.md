@@ -7,7 +7,7 @@
 
 <h4 align="center">
 
-  [BStats](https://bstats.org/plugin/bukkit/rPlace/14956) | [Discord](https://discord.gg/XNf9RWe7HY) | [SpigotMC](https://discord.gg/XNf9RWe7HY) | [Dowenload](https://discord.gg/XNf9RWe7HY)
+  [BStats](https://bstats.org/plugin/bukkit/rPlace/14956) | [Discord](https://discord.gg/XNf9RWe7HY) | [SpigotMC](https://discord.gg/XNf9RWe7HY) | [Download](https://discord.gg/XNf9RWe7HY)
   
 </h4>
 
