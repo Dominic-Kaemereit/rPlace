@@ -8,10 +8,26 @@
 <hr>
 <br>
 
+ <div align="left">
+        <p align="center">
+  <img src="./img/rplace_setup.png">
+          </p>
+
+- Stop current server.
+- Delete the world "world"
+- Upload the plugin in the plugins folder
+- Start your server
+- Have fun!
+  </div>
+<br>
+<hr>
+<br>
+   
+
  <div align="right">
         <p align="center">
   <img src="./img/rplace_description.png">
-
+ 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
   </p>
   </div>
