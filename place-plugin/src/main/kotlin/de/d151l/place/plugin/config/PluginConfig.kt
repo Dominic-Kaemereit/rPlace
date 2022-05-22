@@ -38,6 +38,8 @@ class PluginConfig: Config() {
         "    §8»§a #%ranking%"
     )
 
+    val enableOldPluginWarning = true
+
     @Comment("List of sounds: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html")
     val blockHasNoHistorySound = "ENTITY_STRIDER_EAT"
 

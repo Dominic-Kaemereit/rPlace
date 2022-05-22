@@ -21,11 +21,12 @@ class MessageConfig: Config() {
     val blockHasNoHistory = "%prefix%This block has no change!"
     val blockInformation = "%prefix%This block has been set by §a%name%§7. §8(§a%date%§8)"
     val blockRemoveSuccessfully = "%prefix%You have removed this block!"
+    val oldPluginWarning = "%prefix%You are using an old version of this plugin. You can download a newer version here: %link%"
 
     @Comment("This is for the scoreboard and not for player messages.")
     val seconds = "seconds"
     val second = "second"
-    val redy = "Ready"
+    val ready = "Ready"
 
     val itemBlockRemoverName = "§cBlock remover §8«"
     val itemBlockCheckerName = "§eBlock Investigate §8«"

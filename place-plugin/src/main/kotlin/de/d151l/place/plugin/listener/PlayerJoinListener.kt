@@ -31,6 +31,12 @@ class PlayerJoinListener(
 
         this.place.scoreboardManager.setScoreBoard(player)
         addItems(player)
+
+        if (player.hasPermission("place.warning.old.plugin.version") && this.place.config.enableOldPluginWarning
+            && !this.place.pluginVersion.newestVersion) {
+            player.sendMessage(place.messagesConfig.oldPluginWarning.replace("%prefix%", place.messagesConfig.prefix)
+                .replace("%link%", "https://www.spigotmc.org/resources/r-place.102155/"))
+        }
     }
 
     private fun addItems(player: Player) {

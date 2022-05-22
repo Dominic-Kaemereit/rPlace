@@ -68,7 +68,7 @@ class ScoreboardManager(
                 return  "$cooldowen " + this.place.messagesConfig.seconds
             }
         }
-        return this.place.messagesConfig.redy
+        return this.place.messagesConfig.ready
     }
 
     private fun getOnlinePlayers(): String {

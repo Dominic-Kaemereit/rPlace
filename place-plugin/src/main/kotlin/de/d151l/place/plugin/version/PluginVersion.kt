@@ -14,7 +14,7 @@ class PluginVersion(
     private val apiLink = "https://api.spigotmc.org/legacy/update.php?resource=102155"
     private val pluginVersion: String = this.place.javaPlugin.description.version
 
-    private var newestVersion = true
+    var newestVersion = true
 
     init {
 
