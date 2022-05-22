@@ -17,6 +17,7 @@ import de.d151l.place.plugin.player.PlacePlayerCach
 import de.d151l.place.plugin.scorebord.ScoreboardManager
 import de.d151l.place.plugin.countdown.CooldownTask
 import de.d151l.place.plugin.listener.*
+import de.d151l.place.plugin.version.PluginVersion
 import de.d151l.place.plugin.world.PlaceWorldManager
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
@@ -42,6 +43,7 @@ class Place(
     val databaseManager: DatabaseManager
     val placePlayerCach: PlacePlayerCach
     val blockHistoryManager: BlockHistoryManager
+    val pluginVersion: PluginVersion
 
     val cooledowns: MutableMap<UUID, Long> = mutableMapOf()
 
@@ -63,6 +65,7 @@ class Place(
         this.countdownManager = CountdownManager(this)
         this.placePlayerCach = PlacePlayerCach(this)
         this.blockHistoryManager = BlockHistoryManager(this)
+        this.pluginVersion = PluginVersion(this)
 
         val pluginManager = Bukkit.getPluginManager()
         pluginManager.registerEvents(PlayerJoinListener(this), this.javaPlugin)
