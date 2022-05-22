@@ -21,7 +21,6 @@
           </p>
 
 - Stop current server.
-- Delete the world "world"
 - Upload the plugin in the plugins folder
 - Start your server
 - Have fun!
