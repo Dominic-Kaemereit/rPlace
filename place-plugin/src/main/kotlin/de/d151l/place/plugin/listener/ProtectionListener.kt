@@ -4,6 +4,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockExplodeEvent
 import org.bukkit.event.block.BlockPhysicsEvent
+import org.bukkit.event.block.BlockRedstoneEvent
 import org.bukkit.event.entity.EntitySpawnEvent
 import org.bukkit.event.entity.ExplosionPrimeEvent
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent
@@ -39,5 +40,15 @@ class ProtectionListener : Listener {
     @EventHandler
     fun onEntitySpawn(event: EntitySpawnEvent) {
         event.isCancelled = true
+    }
+
+    @EventHandler
+    fun onBlockPhysics(event: BlockPhysicsEvent) {
+        event.isCancelled = true
+    }
+
+    @EventHandler
+    fun onBlockRedstone(event: BlockRedstoneEvent) {
+        event.newCurrent = 0
     }
 }
