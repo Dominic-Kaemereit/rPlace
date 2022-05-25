@@ -34,6 +34,7 @@ class PlaceWorldManager(
             world.setGameRule(GameRule.RANDOM_TICK_SPEED, 0)
 
             world.spawnLocation = world.spawnLocation.set(0.5, 101.0, 0.5)
+            world.time = 1000
         }
 
         this.world = world!!
