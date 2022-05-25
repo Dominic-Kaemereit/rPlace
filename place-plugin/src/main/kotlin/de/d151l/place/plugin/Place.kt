@@ -86,7 +86,7 @@ class Place(
 
     fun shutdown() {
         Bukkit.getOnlinePlayers().forEach {
-            this.placePlayerCach.unloadPlayer(it.uniqueId)
+            this.placePlayerCach.unloadPlayerAtServerShutdown(it.uniqueId)
             it.kick(null)
         }
 
