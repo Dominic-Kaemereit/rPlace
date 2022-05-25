@@ -7,7 +7,7 @@
 
 <h4 align="center">
 
-  [BStats](https://bstats.org/plugin/bukkit/rPlace/14956) | [Discord](https://discord.gg/XNf9RWe7HY) | [SpigotMC](https://www.spigotmc.org/resources/r-place.102155/) | [Download](https://github.com/D151l/rPlace/releases/download/update/place-plugin-1.0.1-all.jar)
+  [BStats](https://bstats.org/plugin/bukkit/rPlace/14956) | [Discord](https://discord.gg/XNf9RWe7HY) | [SpigotMC](https://www.spigotmc.org/resources/r-place.102155/) | [Download](https://github.com/D151l/rPlace/releases/download/untagged-3ce2cdb1a39976ccc978/rplace.jar)
   
 </h4>
 
