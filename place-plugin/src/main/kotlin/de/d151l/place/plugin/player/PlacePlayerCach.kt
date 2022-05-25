@@ -36,6 +36,14 @@ class PlacePlayerCach(
         if (placePlayer != null) {
             this.place.databaseManager.database.savePlacePlayer(placePlayer)
         }
+        this.players.remove(uuid)
+    }
+
+    fun unloadPlayerAtServerShutdown(uuid: UUID) {
+        val placePlayer = this.players[uuid]
+        if (placePlayer != null) {
+            this.place.databaseManager.database.savePlacePlayer(placePlayer)
+        }
     }
 
     fun getPlayer(uuid: UUID): PlacePlayer? {
