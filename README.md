@@ -60,7 +60,7 @@
 {
   "blockCooldown": 21,
   "worldBorderSize": 313.0, //The worldBorderSize must be an odd number. (1, 7, 15, 31, 101, 1001...)
-  "scoreboardEnabled": false,
+  "scoreboardEnabled": true,
   "scoreboardTitle": "§aServer §8| §7r/Place",
   "scoreboard": [
     "§4§8§l§m---------------",
