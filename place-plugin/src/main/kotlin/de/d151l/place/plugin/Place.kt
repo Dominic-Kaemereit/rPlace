@@ -82,7 +82,9 @@ class Place(
         this.placeWorldManager.setWorldBorder()
         this.blockHistoryCount = this.databaseManager.database.getBlockHistoryCount()
 
-        CooldownTask(this)
+        if (this.config.scoreboardEnabled)
+            CooldownTask(this)
+
         Metrics(this.javaPlugin, 14956)
     }
 
@@ -103,8 +105,8 @@ class Place(
 /**
 
 Set a waiting time according to the given permission
-Switch off the scoreboard
- - Command to reload
+ - Switch off the scoreboard - finish
+ - Command to reload - finish
 Survival mode with flying and menu.
 
  */

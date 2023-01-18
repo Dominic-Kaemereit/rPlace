@@ -29,7 +29,9 @@ class PlayerJoinListener(
         this.place.placePlayerCach.savePlayer(placePlayer)
         this.place.cooledowns[player.uniqueId] = placePlayer.getLastBlockRePlace()
 
-        this.place.scoreboardManager.setScoreBoard(player)
+        if (this.place.config.scoreboardEnabled)
+            this.place.scoreboardManager.setScoreBoard(player)
+
         addItems(player)
 
         if (player.hasPermission("place.warning.old.plugin.version") && this.place.config.enableOldPluginWarning

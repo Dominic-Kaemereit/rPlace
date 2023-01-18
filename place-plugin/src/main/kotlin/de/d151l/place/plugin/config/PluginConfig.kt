@@ -3,8 +3,6 @@ package de.d151l.place.plugin.config
 import com.twodevsstudio.simplejsonconfig.api.Config
 import com.twodevsstudio.simplejsonconfig.interfaces.Comment
 import com.twodevsstudio.simplejsonconfig.interfaces.Configuration
-import de.d151l.place.api.database.DatabaseType
-import org.bukkit.Bukkit
 
 /**
  * @created 16/04/2022 - 11:19
@@ -19,6 +17,7 @@ class PluginConfig: Config() {
     @Comment("The worldBorderSize must be an odd number. (1, 7, 15, 31, 101, 1001...)")
     val worldBorderSize = 313.0
 
+    val scoreboardEnabled = true
     val scoreboardTitle = "§aServer §8| §7r/Place"
     val scoreboard: List<String> = mutableListOf(
         "§4§8§l§m---------------",
