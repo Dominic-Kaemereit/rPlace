@@ -121,10 +121,11 @@
 </p>
 
 | Permissions                | Features                                       |
-| -------------------------- |:----------------------------------------------:|
+|----------------------------|:----------------------------------------------:|
 | place.item.remover         | Add a block remover to the inventory.          |
 | place.item.checker         | Add a block remover in the inventory.          |
 | place.command.remove.block | Permission to execute the /removeBlock command |
 | place.command.check.block  | Permission to execute the /checkBlock command  |
+| place.command.rplace       | Permission to execute the /rplace command  |
   
   </div>

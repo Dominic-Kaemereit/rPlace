@@ -6,6 +6,7 @@ import de.d151l.place.plugin.util.Metrics
 import de.d151l.place.api.database.DatabaseType
 import de.d151l.place.plugin.world.block.BlockHistoryManager
 import de.d151l.place.plugin.command.CheckBlockCommand
+import de.d151l.place.plugin.command.RPlaceCommand
 import de.d151l.place.plugin.command.RemoveBlockCommand
 import de.d151l.place.plugin.config.BlockingItemsConfig
 import de.d151l.place.plugin.config.DatabaseConfig
@@ -76,6 +77,7 @@ class Place(
 
         this.javaPlugin.getCommand("removeBlock")?.setExecutor(RemoveBlockCommand(this))
         this.javaPlugin.getCommand("checkBlock")?.setExecutor(CheckBlockCommand(this))
+        this.javaPlugin.getCommand("rplace")?.setExecutor(RPlaceCommand(this))
 
         this.placeWorldManager.setWorldBorder()
         this.blockHistoryCount = this.databaseManager.database.getBlockHistoryCount()
@@ -97,3 +99,12 @@ class Place(
         lateinit var instance: Place
     }
 }
+
+/**
+
+Set a waiting time according to the given permission
+Switch off the scoreboard
+ - Command to reload
+Survival mode with flying and menu.
+
+ */

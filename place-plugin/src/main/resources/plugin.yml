@@ -10,3 +10,5 @@ commands:
     permission: place.command.remove.block
   checkBlock:
     permission: place.command.check.block
+  rplace:
+    permission: place.command.rplace
