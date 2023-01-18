@@ -39,6 +39,7 @@
 - All messages full configurable
 - 1.13 - 1.18.2 Server support
 - Database support (SQLite, MySQL, MongoDB)
+- Custom place time with permission ("rplace-permission-time-\<seconds>")
   </div>
 
 <br>
@@ -120,12 +121,12 @@
   <img src="./img/rplace_permissions.png">
 </p>
 
-| Permissions                | Features                                       |
+| Permissions                |                    Features                    |
 |----------------------------|:----------------------------------------------:|
-| place.item.remover         | Add a block remover to the inventory.          |
-| place.item.checker         | Add a block remover in the inventory.          |
+| place.item.remover         |     Add a block remover to the inventory.      |
+| place.item.checker         |     Add a block remover in the inventory.      |
 | place.command.remove.block | Permission to execute the /removeBlock command |
 | place.command.check.block  | Permission to execute the /checkBlock command  |
-| place.command.rplace       | Permission to execute the /rplace command  |
+| place.command.rplace       |   Permission to execute the /rplace command    |
   
   </div>
