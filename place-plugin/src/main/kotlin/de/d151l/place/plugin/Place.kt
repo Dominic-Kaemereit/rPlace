@@ -104,7 +104,7 @@ class Place(
 
 /**
 
-Set a waiting time according to the given permission
+ - Set a waiting time according to the given permission - finish
  - Switch off the scoreboard - finish
  - Command to reload - finish
 Survival mode with flying and menu.

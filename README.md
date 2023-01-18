@@ -37,7 +37,7 @@
 - Geyser compatibility
 - Scoreboard full configurable
 - All messages full configurable
-- 1.13 - 1.18.2 Server support
+- 1.13 - 1.19.3 Server support
 - Database support (SQLite, MySQL, MongoDB)
 - Custom place time with permission ("rplace-permission-time-\<seconds>")
   </div>
@@ -57,9 +57,10 @@
   This is a default config.
   
   ```json
-  {
+{
   "blockCooldown": 21,
   "worldBorderSize": 313.0, //The worldBorderSize must be an odd number. (1, 7, 15, 31, 101, 1001...)
+  "scoreboardEnabled": false,
   "scoreboardTitle": "§aServer §8| §7r/Place",
   "scoreboard": [
     "§4§8§l§m---------------",
@@ -78,11 +79,11 @@
     " §8§l» §7Your ranking§3",
     "    §8»§a #%ranking%"
   ],
+  "enableOldPluginWarning": true,
   "blockHasNoHistorySound": "ENTITY_STRIDER_EAT", //List of sounds: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
   "itemRemoverMaterial": "STICK", //List of materials: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
   "itemCheckerMaterial": "END_ROD"
 }
-
   ```
   
 </details>
@@ -102,9 +103,13 @@
   "blockHasNoHistory": "%prefix%This block has no change!",
   "blockInformation": "%prefix%This block has been set by §a%name%§7. §8(§a%date%§8)",
   "blockRemoveSuccessfully": "%prefix%You have removed this block!",
+  "oldPluginWarning": "%prefix%You are using an old version of this plugin. You can download a newer version here: %link%",
+  "rPlaceCommandHelp": "%prefix%§c/rplace reload",
+  "rPlaceCommandReloadTry": "%prefix%§cTrying to reload all configs...",
+  "rPlaceCommandReloadSuccessfully": "%prefix%§7All configs wars §asuccessfully §7reloaded.",
   "seconds": "seconds", //This is for the scoreboard and not for player messages.
   "second": "second",
-  "redy": "Ready",
+  "ready": "Ready",
   "itemBlockRemoverName": "§cBlock remover §8«",
   "itemBlockCheckerName": "§eBlock Investigate §8«"
 }
