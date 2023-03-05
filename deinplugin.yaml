@@ -1,0 +1,40 @@
+specVersion: 1
+type: plugin
+name: r/Place
+authors:
+  - D151l
+download:
+  url: https://github.com/D151l/rPlace/releases/download/update/rplace.jar
+  name: r/Place
+supportedPlatforms:
+  - spigot
+  - paper
+supportedGameVersions: ^1.13
+category: misc
+introduction: A funny game for your server/network
+description: |
+      #r/Features
+      - Geyser compatibility
+      - Scoreboard full configurable
+      - All messages full configurable
+      - 1.13 - 1.18.2 Server support
+      - Database support (SQLite, MySQL, MongoDB)
+
+      #r/Permissions
+      - place.item.remover          Add a block remover to the inventory.
+      - place.item.checker	        Add a block checker in the inventory.
+      - place.command.remove.block	Permission to execute the /removeBlock command
+      - place.command.check.block	  Permission to execute the /checkBlock command
+installation: |
+    - Stop current server.
+    - Upload the plugin in the plugins folder
+    - Start your server
+    - Have fun!
+tags:
+  - r/place
+images:
+  - https://www.spigotmc.org/attachments/screenshot_10-png.703169/
+  - https://www.spigotmc.org/attachments/screenshot_11-png.703170/
+  - https://www.spigotmc.org/attachments/screenshot_12-png.703171/
+  - https://www.spigotmc.org/attachments/screenshot_13-png.703172/
+  - https://www.spigotmc.org/attachments/screenshot_14-png.703173/
