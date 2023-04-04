@@ -37,7 +37,7 @@
 - Geyser compatibility
 - Scoreboard full configurable
 - All messages full configurable
-- 1.13 - 1.19.3 Server support
+- 1.13 - 1.19.4 Server support
 - Database support (SQLite, MySQL, MongoDB)
   </div>
 
