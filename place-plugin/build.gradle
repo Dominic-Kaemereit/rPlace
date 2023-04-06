@@ -13,8 +13,8 @@ dependencies {
 
     implementation 'fr.mrmicky:fastboard:1.2.1'
 
-    implementation 'com.github.slighterr12:SimpleJSONConfig:1.2'
-    compileOnly 'com.github.slighterr12:SimpleJSONConfig:1.2'
+    implementation 'com.github.slighterr12:SimpleJSONConfig:1.3.2'
+    compileOnly 'com.github.slighterr12:SimpleJSONConfig:1.3.2'
 }
 
 test {
