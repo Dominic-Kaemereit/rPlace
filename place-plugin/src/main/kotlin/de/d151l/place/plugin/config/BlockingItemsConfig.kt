@@ -17,6 +17,8 @@ class BlockingItemsConfig: Config() {
         Material.CONDUIT.name,
         Material.TURTLE_EGG.name,
         Material.BAMBOO.name,
+        Material.TURTLE_EGG.name,
+        Material.DRAGON_EGG.name,
         "FARMLAND"
     )
 
