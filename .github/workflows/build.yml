@@ -2,7 +2,7 @@ name: rPlace
 
 on:
   push:
-    branches: ["master"]
+    branches: ["master", "development"]
 
 jobs:
   build:
