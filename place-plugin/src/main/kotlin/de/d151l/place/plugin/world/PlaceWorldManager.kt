@@ -2,10 +2,7 @@ package de.d151l.place.plugin.world
 
 import de.d151l.place.plugin.Place
 import de.d151l.place.plugin.world.chunk.PlaceChunkGenerator
-import org.bukkit.Bukkit
-import org.bukkit.GameRule
-import org.bukkit.World
-import org.bukkit.WorldCreator
+import org.bukkit.*
 
 /**
  * @created 15/04/2022 - 13:27
@@ -33,7 +30,6 @@ class PlaceWorldManager(
             world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false)
             world.setGameRule(GameRule.RANDOM_TICK_SPEED, 0)
 
-            world.spawnLocation = world.spawnLocation.set(0.5, 101.0, 0.5)
             world.time = 1000
         }
 
@@ -41,7 +37,7 @@ class PlaceWorldManager(
     }
 
     fun setWorldBorder() {
-        world.worldBorder.center = world.spawnLocation.set(0.5, 101.0, 0.5)
+        world.worldBorder.center = Location(this.world, 0.5, 101.0, 0.5)
         world.worldBorder.size = this.place.config.worldBorderSize
         world.worldBorder.warningDistance = 0
     }

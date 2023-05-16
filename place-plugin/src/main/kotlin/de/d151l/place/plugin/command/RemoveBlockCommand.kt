@@ -24,7 +24,7 @@ class RemoveBlockCommand(
     ): Boolean {
         val player: Player = sender as Player
 
-        val targetBlock = player.getTargetBlock(100) ?: return false
+        val targetBlock = player.getTargetBlockExact(100) ?: return false
 
         if (!this.place.blockHistoryManager.hasBlockanHistory(targetBlock)) {
             player.sendMessage(place.messagesConfig.blockHasNoHistory.replace("%prefix%", place.messagesConfig.prefix))

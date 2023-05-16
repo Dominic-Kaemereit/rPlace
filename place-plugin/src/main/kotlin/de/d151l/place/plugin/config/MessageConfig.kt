@@ -22,6 +22,9 @@ class MessageConfig: Config() {
     val blockInformation = "%prefix%This block has been set by §a%name%§7. §8(§a%date%§8)"
     val blockRemoveSuccessfully = "%prefix%You have removed this block!"
     val oldPluginWarning = "%prefix%You are using an old version of this plugin. You can download a newer version here: %link%"
+    val rPlaceCommandHelp = "%prefix%§c/rplace reload"
+    val rPlaceCommandReloadTry = "%prefix%§cTrying to reload all configs..."
+    val rPlaceCommandReloadSuccessfully = "%prefix%§7All configs wars §asuccessfully §7reloaded."
 
     @Comment("This is for the scoreboard and not for player messages.")
     val seconds = "seconds"

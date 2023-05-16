@@ -3,6 +3,7 @@ package de.d151l.place.plugin.listener
 import de.d151l.place.plugin.util.ItemBuilder
 import de.d151l.place.plugin.Place
 import org.bukkit.GameMode
+import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -22,14 +23,16 @@ class PlayerJoinListener(
     fun onJoin(event: PlayerJoinEvent) {
         val player = event.player
 
-        player.teleport(this.place.placeWorldManager.world.spawnLocation.set(0.5, 101.0, 0.5))
+        player.teleport(Location(this.place.placeWorldManager.world,0.5, 101.0, 0.5))
         player.gameMode = GameMode.CREATIVE
 
         val placePlayer = this.place.placePlayerCach.loadPlayer(player)
         this.place.placePlayerCach.savePlayer(placePlayer)
         this.place.cooledowns[player.uniqueId] = placePlayer.getLastBlockRePlace()
 
-        this.place.scoreboardManager.setScoreBoard(player)
+        if (this.place.config.scoreboardEnabled)
+            this.place.scoreboardManager.setScoreBoard(player)
+
         addItems(player)
 
         if (player.hasPermission("place.warning.old.plugin.version") && this.place.config.enableOldPluginWarning

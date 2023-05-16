@@ -2,6 +2,7 @@ package de.d151l.place.plugin.listener
 
 import de.d151l.place.plugin.Place
 import de.d151l.place.plugin.world.block.BlockChecker
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
@@ -52,7 +53,7 @@ class BlockListener(
             return
 
         this.place.cooledowns[player.uniqueId] = (System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(
-            this.place.config.blockCooldown.toLong()
+            this.getBlockCooldownTime(player).toLong()
         ))
         block.type = type
 
@@ -63,5 +64,18 @@ class BlockListener(
     @EventHandler
     fun onPlaceBreak(event: BlockPlaceEvent) {
         event.isCancelled = true
+    }
+
+    private fun getBlockCooldownTime(player: Player): Int {
+        player.effectivePermissions.forEach {
+            if (!it.permission.startsWith("rplace-permission-time-"))
+                return@forEach
+
+            val replace = it.permission.replace("rplace-permission-time-", "")
+            try {
+                return replace.toInt()
+            } catch (_: Exception) {}
+        }
+        return this.place.config.blockCooldown
     }
 }

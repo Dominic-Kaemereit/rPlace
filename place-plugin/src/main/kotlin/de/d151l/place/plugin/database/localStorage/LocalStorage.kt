@@ -184,8 +184,11 @@ class LocalStorage: DatabaseSupport {
 
     override fun getBlockHistoryCount(): Int {
         val preparedStatement = connection
-            .prepareStatement("SELECT * FROM placeBlockHistory")
+            .prepareStatement("SELECT count(*) FROM placeBlockHistory")
        val resultSet: ResultSet = preparedStatement.executeQuery()
-        return resultSet.fetchSize
+        while (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+        return 0
     }
 }
