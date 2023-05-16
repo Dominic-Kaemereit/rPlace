@@ -1,10 +1,9 @@
 package de.d151l.place.plugin.listener
 
+import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.block.BlockExplodeEvent
-import org.bukkit.event.block.BlockPhysicsEvent
-import org.bukkit.event.block.BlockRedstoneEvent
+import org.bukkit.event.block.*
 import org.bukkit.event.entity.EntitySpawnEvent
 import org.bukkit.event.entity.ExplosionPrimeEvent
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent
@@ -50,5 +49,20 @@ class ProtectionListener : Listener {
     @EventHandler
     fun onBlockRedstone(event: BlockRedstoneEvent) {
         event.newCurrent = 0
+    }
+
+    @EventHandler
+    fun onBlockGrow(event: BlockGrowEvent) {
+        event.isCancelled = true
+    }
+
+    @EventHandler
+    fun onLeavesDecayEvent(event: LeavesDecayEvent) {
+        event.isCancelled = true
+    }
+
+    @EventHandler
+    fun onExplosionPrime(event: BlockIgniteEvent) {
+        event.isCancelled = true
     }
 }
