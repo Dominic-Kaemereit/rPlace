@@ -1,26 +1,14 @@
 plugins {
-    id 'com.github.johnrengelman.shadow' version '8.1.1'
-}
-
-repositories {
-    maven { url 'https://jitpack.io' }
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 dependencies {
-    compileOnly(files("../../libs/paper.jar"))
-    implementation(project(":place-api"))
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation project(":place-api")
 
     implementation 'fr.mrmicky:fastboard:1.2.1'
 
     implementation 'com.github.slighterr12:SimpleJSONConfig:1.2'
-    compileOnly 'com.github.slighterr12:SimpleJSONConfig:1.2'
 }
-
-test {
-    useJUnitPlatform()
-}
-
 
 shadowJar {
     relocate 'kotlin', 'de.d151l.libs.kotlin'
