@@ -1,8 +1,6 @@
 package de.d151l.place.plugin.util
 
-import com.destroystokyo.paper.Namespaced
 import com.google.common.collect.Multimap
-import net.kyori.adventure.text.Component
 import org.bukkit.Material
 import org.bukkit.attribute.Attribute
 import org.bukkit.attribute.AttributeModifier
@@ -10,7 +8,6 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
-import java.util.*
 
 
 /**
@@ -24,27 +21,12 @@ class ItemBuilder {
 
     constructor(material: Material) {
         itemStack = ItemStack(material)
-        itemMeta = itemStack.itemMeta
+        itemMeta = itemStack.itemMeta!!
     }
 
     constructor(itemStack: ItemStack) {
         this.itemStack = itemStack
-        itemMeta = this.itemStack.itemMeta
-    }
-
-    fun setDisplayName(name: Component?): ItemBuilder {
-        itemMeta.displayName(name)
-        return this
-    }
-
-    fun setNoName(): ItemBuilder {
-        itemMeta.displayName(Component.empty())
-        return this
-    }
-
-    fun setDescription(lore: MutableList<Component> = mutableListOf()): ItemBuilder {
-        itemMeta.lore(lore)
-        return this
+        itemMeta = this.itemStack.itemMeta!!
     }
 
     @Deprecated("")
@@ -107,16 +89,6 @@ class ItemBuilder {
 
     fun removeAttributeModifier(attribute: Attribute, attributeModifier: AttributeModifier): ItemBuilder {
         itemMeta.removeAttributeModifier(attribute, attributeModifier)
-        return this
-    }
-
-    fun setDestroyableKeys(collection: Collection<Namespaced?>?): ItemBuilder {
-        itemMeta.setDestroyableKeys(collection!!)
-        return this
-    }
-
-    fun setPlaceableKeys(collection: Collection<Namespaced?>?): ItemBuilder {
-        itemMeta.setPlaceableKeys(collection!!)
         return this
     }
 

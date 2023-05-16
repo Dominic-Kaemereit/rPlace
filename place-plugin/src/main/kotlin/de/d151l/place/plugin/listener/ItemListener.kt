@@ -27,11 +27,11 @@ class ItemListener(
             if (item != null) {
                 if (checkIfItem(item)) {
 
-                    if (item.itemMeta.localizedName == "item-remover") {
+                    if (item.itemMeta?.localizedName == "item-remover") {
                         event.isCancelled = true
                         return
                     }
-                    if (item.itemMeta.localizedName == "item-checker") {
+                    if (item.itemMeta?.localizedName == "item-checker") {
                         event.isCancelled = true
                         return
                     }
@@ -50,11 +50,11 @@ class ItemListener(
             if (item != null) {
                 if (checkIfItem(item)) {
 
-                    if (item.itemMeta.localizedName == "item-remover") {
+                    if (item.itemMeta?.localizedName == "item-remover") {
                         event.isCancelled = true
                         return
                     }
-                    if (item.itemMeta.localizedName == "item-checker") {
+                    if (item.itemMeta?.localizedName == "item-checker") {
                         event.isCancelled = true
                         return
                     }
@@ -75,9 +75,9 @@ class ItemListener(
             if (item != null) {
                 if (checkIfItem(item)) {
 
-                    if (item.itemMeta.localizedName == "item-remover")
+                    if (item.itemMeta?.localizedName == "item-remover")
                         Bukkit.dispatchCommand(event.player, "removeBlock")
-                    if (item.itemMeta.localizedName == "item-checker")
+                    if (item.itemMeta?.localizedName == "item-checker")
                         Bukkit.dispatchCommand(event.player, "checkBlock")
                 }
             }
@@ -105,10 +105,10 @@ class ItemListener(
         if (item.itemMeta == null)
             return false
 
-        if (!item.itemMeta.hasLocalizedName())
+        if (!item.itemMeta?.hasLocalizedName()!!)
             return false
 
-        if (!item.itemMeta.localizedName.contains("item"))
+        if (!item.itemMeta?.localizedName?.contains("item")!!)
             return false
         return true
     }

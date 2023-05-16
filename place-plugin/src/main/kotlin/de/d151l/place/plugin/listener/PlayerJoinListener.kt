@@ -3,6 +3,7 @@ package de.d151l.place.plugin.listener
 import de.d151l.place.plugin.util.ItemBuilder
 import de.d151l.place.plugin.Place
 import org.bukkit.GameMode
+import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -22,7 +23,7 @@ class PlayerJoinListener(
     fun onJoin(event: PlayerJoinEvent) {
         val player = event.player
 
-        player.teleport(this.place.placeWorldManager.world.spawnLocation.set(0.5, 101.0, 0.5))
+        player.teleport(Location(this.place.placeWorldManager.world,0.5, 101.0, 0.5))
         player.gameMode = GameMode.CREATIVE
 
         val placePlayer = this.place.placePlayerCach.loadPlayer(player)
