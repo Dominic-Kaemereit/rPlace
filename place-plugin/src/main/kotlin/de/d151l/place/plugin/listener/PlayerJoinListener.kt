@@ -1,14 +1,16 @@
 package de.d151l.place.plugin.listener
 
-import de.d151l.place.plugin.util.ItemBuilder
 import de.d151l.place.plugin.Place
 import org.bukkit.GameMode
 import org.bukkit.Location
 import org.bukkit.Material
+import org.bukkit.NamespacedKey
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
+import org.bukkit.inventory.ItemStack
+import org.bukkit.persistence.PersistentDataType
 
 /**
  * @created 15/04/2022 - 13:25
@@ -43,15 +45,23 @@ class PlayerJoinListener(
     }
 
     private fun addItems(player: Player) {
-        if (player.hasPermission("place.item.remover"))
-            player.inventory.setItem(7, ItemBuilder(Material.valueOf(this.place.config.itemRemoverMaterial))
-                .setDisplayName(this.place.messagesConfig.itemBlockRemoverName)
-                .setLocalizedName("item-remover")
-                .build())
-        if (player.hasPermission("place.item.checker"))
-            player.inventory.setItem(8, ItemBuilder(Material.valueOf(this.place.config.itemCheckerMaterial))
-                .setDisplayName(this.place.messagesConfig.itemBlockCheckerName)
-                .setLocalizedName("item-checker")
-                .build())
+        if (player.hasPermission("place.item.remover")) {
+            val blockRemover = ItemStack(Material.valueOf(this.place.config.itemRemoverMaterial))
+            val blockRemoverMeta = blockRemover.itemMeta!!
+
+            blockRemoverMeta.setDisplayName(this.place.messagesConfig.itemBlockRemoverName)
+            blockRemoverMeta.persistentDataContainer.set(NamespacedKey(this.place.javaPlugin, "item-remover"), PersistentDataType.STRING, "item-remover")
+            blockRemover.itemMeta = blockRemoverMeta
+            player.inventory.setItem(7, blockRemover)
+        }
+        if (player.hasPermission("place.item.checker")) {
+            val blockChecker = ItemStack(Material.valueOf(this.place.config.itemCheckerMaterial))
+            val blockCheckerMeta = blockChecker.itemMeta!!
+
+            blockCheckerMeta.setDisplayName(this.place.messagesConfig.itemBlockCheckerName)
+            blockCheckerMeta.persistentDataContainer.set(NamespacedKey(this.place.javaPlugin, "item-checker"), PersistentDataType.STRING, "item-checker")
+            blockChecker.itemMeta = blockCheckerMeta
+            player.inventory.setItem(8, blockChecker)
+        }
     }
 }

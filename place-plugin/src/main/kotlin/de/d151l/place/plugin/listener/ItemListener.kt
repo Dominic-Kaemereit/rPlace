@@ -3,6 +3,7 @@ package de.d151l.place.plugin.listener
 import de.d151l.place.plugin.Place
 import de.d151l.place.plugin.world.block.BlockChecker
 import org.bukkit.Bukkit
+import org.bukkit.NamespacedKey
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -10,6 +11,7 @@ import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.player.PlayerDropItemEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
+import org.bukkit.persistence.PersistentDataType
 
 /**
  * @created 16/04/2022 - 16:53
@@ -26,15 +28,8 @@ class ItemListener(
             val item = event.currentItem
             if (item != null) {
                 if (checkIfItem(item)) {
-
-                    if (item.itemMeta?.localizedName == "item-remover") {
-                        event.isCancelled = true
-                        return
-                    }
-                    if (item.itemMeta?.localizedName == "item-checker") {
-                        event.isCancelled = true
-                        return
-                    }
+                    event.isCancelled = true
+                    return
                 }
 
                 if (!BlockChecker.check(place, event.whoClicked as Player, item.type)) {
@@ -49,15 +44,8 @@ class ItemListener(
             val item = event.cursor
             if (item != null) {
                 if (checkIfItem(item)) {
-
-                    if (item.itemMeta?.localizedName == "item-remover") {
-                        event.isCancelled = true
-                        return
-                    }
-                    if (item.itemMeta?.localizedName == "item-checker") {
-                        event.isCancelled = true
-                        return
-                    }
+                    event.isCancelled = true
+                    return
                 }
 
                 if (!BlockChecker.check(place, event.whoClicked as Player, item.type)) {
@@ -75,9 +63,9 @@ class ItemListener(
             if (item != null) {
                 if (checkIfItem(item)) {
 
-                    if (item.itemMeta?.localizedName == "item-remover")
+                    if (item.itemMeta!!.persistentDataContainer.has(NamespacedKey(place.javaPlugin, "item-remover"), PersistentDataType.STRING))
                         Bukkit.dispatchCommand(event.player, "removeBlock")
-                    if (item.itemMeta?.localizedName == "item-checker")
+                    if (item.itemMeta!!.persistentDataContainer.has(NamespacedKey(place.javaPlugin, "item-checker"), PersistentDataType.STRING))
                         Bukkit.dispatchCommand(event.player, "checkBlock")
                 }
             }
@@ -105,11 +93,10 @@ class ItemListener(
         if (item.itemMeta == null)
             return false
 
-        if (!item.itemMeta?.hasLocalizedName()!!)
+        if (!item.itemMeta!!.persistentDataContainer.has(NamespacedKey(place.javaPlugin, "item-remover"), PersistentDataType.STRING)
+            && !item.itemMeta!!.persistentDataContainer.has(NamespacedKey(place.javaPlugin, "item-checker"), PersistentDataType.STRING))
             return false
 
-        if (!item.itemMeta?.localizedName?.contains("item")!!)
-            return false
         return true
     }
 }
