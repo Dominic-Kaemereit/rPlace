@@ -5,7 +5,7 @@ plugins {
 dependencies {
     implementation project(":place-api")
 
-    implementation 'fr.mrmicky:fastboard:1.2.1'
+    implementation 'fr.mrmicky:fastboard:2.1.3'
 
     implementation 'com.github.slighterr12:SimpleJSONConfig:1.2'
 }
